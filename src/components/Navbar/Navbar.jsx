@@ -36,7 +36,7 @@ export const Navbar = () => {
           </div>
         </div>
         <img
-          src="/assets/person/user8.jpeg"
+          src="/assets/person/profile.jpeg"
           alt="profileImg"
           className="navbarImage"
         />

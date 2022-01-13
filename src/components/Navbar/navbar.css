@@ -1,7 +1,7 @@
 .navbarContainer {
   height: 50px;
   width: 100%;
-  background-color: rgb(77, 75, 197);
+  background-color: rgb(105, 103, 204);
   display: flex;
   align-items: center;
   position: sticky;
@@ -41,7 +41,7 @@
 
 .searchInput {
   border: none;
-  width: 95%;
+  width: 90%;
 }
 
 /* при фокусе рамка не показывается */
