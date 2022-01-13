@@ -1,9 +1,7 @@
-function App() {
-  return (
-    <div>
-      Lalala
-    </div>
-  );
-}
+import { Home } from "./pages/home/Home"
 
-export default App;
+export const App = () => {
+  return <div>
+    <Home />
+  </div>
+};
