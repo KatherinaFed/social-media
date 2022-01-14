@@ -1,9 +1,12 @@
+import { Share } from '../Share/Share';
 import './feed.css';
 
 export const Feed = () => {
   return (
     <div className="feed">
-      FEED
+      <div className="feedWrapper">
+        <Share />
+      </div>
     </div>
   )
 };
