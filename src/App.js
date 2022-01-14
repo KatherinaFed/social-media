@@ -1,7 +1,9 @@
-import { Home } from "./pages/home/Home"
+import { Home } from './pages/home/Home';
 
 export const App = () => {
-  return <div>
-    <Home />
-  </div>
+  return (
+    <div>
+      <Home />
+    </div>
+  );
 };
