@@ -7,7 +7,7 @@ export const Share = () => {
       <div className="shareWrapper">
         <div className="shareTop">
           <img
-            src="/assets/person/profile.jpeg"
+            src="/assets/person/user1.jpeg"
             alt="profileImg"
             className="shareProfileImg"
           />
