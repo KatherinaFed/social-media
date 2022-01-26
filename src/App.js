@@ -12,8 +12,13 @@ export const App = () => {
     <div>
       <Header />
       <Grid container>
-        
+        <Grid item sm={2}>
+          <Navbar />
+        </Grid>
+        <Grid item sm={10}>
+
+        </Grid>
       </Grid>
     </div>
-  );
+  ); 
 };
