@@ -1,0 +1,29 @@
+/* .app-body {
+  margin: 0 auto;
+  display: grid;
+  width: 1200px;
+  grid-template-areas: "head head"
+                       "nav  content"
+                       "foot  foot";
+  grid-template-rows: 50px 1fr 30px;
+  grid-template-columns: 150px 1fr;
+  grid-gap: 10px;
+} */
+
+.app-body {
+  margin: 0 auto;
+  width: 1200px;
+}
+
+.navbar {
+  background-color: #f0f0f0;
+}
+
+.header {
+  /* grid-area: head; */
+  background-color: #6074d8;
+}
+
+.content {
+  background-color: rgb(129, 187, 214);
+}
