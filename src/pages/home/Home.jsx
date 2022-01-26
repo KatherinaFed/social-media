@@ -1,17 +1,17 @@
 import './home.css';
 import { Feed } from '../../components/Feed/Feed';
-import { Navbar } from '../../components/Navbar/Navbar';
+import { Header } from '../../components/Header/Header';
 import { Rightbar } from '../../components/Rightbar/Rightbar';
-import { Sidebar } from '../../components/Sidebar/Sidebar';
+import { Navbar } from '../../components/Navbar/Navbar';
 
 export const Home = () => {
   return (
     <>
-      <Navbar />
+      <Header />
       <div className="homeContainer">
-        <Sidebar />
-        <Feed />
-        <Rightbar />
+        <Navbar />
+        {/* <Feed />
+        <Rightbar /> */}
       </div>
     </>
   )

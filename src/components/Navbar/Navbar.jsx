@@ -1,45 +1,37 @@
-import './navbar.css';
-import { Search, Person, Chat, Notifications } from '@mui/icons-material';
+// import './sidebar.css';
+import { Person, Chat, Settings, People } from '@mui/icons-material';
+import { CloseFriends } from '../Users/closeFriends/CloseFriends';
+import { Users } from '../../dummyData';
 
 export const Navbar = () => {
   return (
-    <div className="navbarContainer">
-      <div className="navbarLeft">
-        <span className="logo">Social App</span>
-      </div>
-      <div className="navbarCenter">
-        <div className="searchbar">
-          <Search className="searchIcon" />
-          <input
-            placeholder="Search for friend, post or video"
-            className="searchInput"
-          />
-        </div>
-      </div>
-      <div className="navbarRight">
-        <div className="navbarLinks">
-          <span className="navbarLink">Homepage</span>
-          <span className="navbarLink">Timeline</span>
-        </div>
-        <div className="navbarIcons">
-          <div className="navbarIconItem">
-            <Person />
-            <span className="navbarIconBadge">1</span>
-          </div>
-          <div className="navbarIconItem">
-            <Chat />
-            <span className="navbarIconBadge">3</span>
-          </div>
-          <div className="navbarIconItem">
-            <Notifications />
-            <span className="navbarIconBadge">2</span>
-          </div>
-        </div>
-        <img
-          src="/assets/person/user1.jpeg"
-          alt="profileImg"
-          className="navbarImage"
-        />
+    <div className="navbar">
+      <div className="sidebarWrapper">
+        <ul className="sidebarList">
+          <li className="sidebarListItem">
+            <Person className="sidebarIcon" />
+            <span className="sidebarListItemText">Profile</span>
+          </li>
+          <li className="sidebarListItem">
+            <Chat className="sidebarIcon" />
+            <span className="sidebarListItemText">Chat</span>
+          </li>
+          <li className="sidebarListItem">
+            <People className="sidebarIcon" />
+            <span className="sidebarListItemText">Users</span>
+          </li>
+          <li className="sidebarListItem">
+            <Settings className="sidebarIcon" />
+            <span className="sidebarListItemText">Settings</span>
+          </li>
+        </ul>
+        <button className="sidebarButton">Show more</button>
+        <hr className="hr" />
+        <ul className="sidebarFriendList">
+          {Users.map((u) => (
+            <CloseFriends key={u.id} user={u} />
+          ))}
+        </ul>
       </div>
     </div>
   );
