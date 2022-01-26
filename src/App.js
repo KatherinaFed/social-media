@@ -1,11 +1,12 @@
-import { Box, Grid } from '@mui/material';
-import './app.css';
+import { Grid } from '@mui/material';
+import { Routes, Route } from 'react-router-dom';
+
 import { Header } from './components/Header/Header';
 import { Navbar } from './components/Navbar/Navbar';
-import { Home } from './pages/home/Home';
-import { Login } from './pages/login/Login';
-import { Profile } from './pages/profile/Profile';
-import { Signup } from './pages/signup/Signup';
+import { Homepage } from './views/homePage/HomePage.jsx';
+import { Messages } from './views/messagesPage/MessagesPage';
+import { UsersList } from './views/usersPage/UsersList';
+import { UserPage } from './views/usersPage/UserPage';
 
 export const App = () => {
   return (
@@ -16,9 +17,14 @@ export const App = () => {
           <Navbar />
         </Grid>
         <Grid item sm={10}>
-
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/users" element={<UsersList />} />
+            <Route path="/user/:id" element={<UserPage />} />
+          </Routes>
         </Grid>
       </Grid>
     </div>
-  ); 
+  );
 };
