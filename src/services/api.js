@@ -9,17 +9,24 @@ const instance = axios.create({
   },
 });
 
+// SECURITY
+export const securityAPI = {
+  getCaptchaUrl() {
+    return instance.get('security/get-captcha-url');
+  },
+};
+
 // IS AUTH ME
 export const authAPI = {
-  authMe() {
+  isAuth() {
     return instance.get('auth/me').then(({ data }) => data);
   },
-  // login(email, password, rememberMe = false, captcha = null) {
-  //   return instance
-  //     .post('auth/login', { email, password, rememberMe, captcha })
-  //     .then(({ data }) => data);
-  // },
-  // logout() {
-  //   return instance.delete('auth/login').then(({ data }) => data);
-  // },
+  login(email, password, rememberMe = false, captcha = null) {
+    return instance
+      .post('auth/login', { email, password, rememberMe, captcha })
+      .then(({ data }) => data);
+  },
+  logout() {
+    return instance.delete('auth/login').then(({ data }) => data);
+  },
 };
