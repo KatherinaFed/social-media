@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: 'auth',
   initialState: {
     userId: null,
@@ -13,13 +13,13 @@ export const authSlice = createSlice({
     setAuthData(state, action) {
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     },
     getCaptcha(state, action) {
       return {
         ...state,
-        ...action.payload,
+        captcha: action.payload,
       };
     },
   },

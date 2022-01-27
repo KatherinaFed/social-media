@@ -1,5 +1,5 @@
-import { authAPI } from '../../services/api';
-import store from '../index';
+import { authAPI, securityAPI } from '../../services/api';
+import { setAuthData, getCaptcha } from './authSlice';
 
 const initialState = {
   userId: null,
@@ -9,12 +9,12 @@ const initialState = {
   captcha: null,
 };
 
-export const getAuthUserDataThunk = () => async (dispatch) => {
-  const response = await authAPI.authMe();
+export const getAuthUserData = () => async (dispatch) => {
+  const response = await authAPI.isAuth();
 
   if (response.resultCode === 0) {
     const { id, email, login } = response.data;
-    dispatch(setAuthUserData(id, email, login, true));
+    dispatch(setAuthData(id, email, login, true));
   }
 };
 
@@ -25,10 +25,11 @@ export const login = (
   captcha,
   setStatus
 ) => async (dispatch) => {
+  
   const response = await authAPI.login(email, password, rememberMe, captcha);
 
   if (response.resultCode === 0) {
-    dispatch(getAuthUserDataThunk());
+    dispatch(getAuthUserData());
   } else if (response.resultCode === 10) {
     dispatch(getCaptchaUrlThunk());
   } else {
@@ -40,13 +41,13 @@ export const logout = () => async (dispatch) => {
   const response = await authAPI.logout();
 
   if (response.resultCode === 0) {
-    dispatch(setAuthUserData(initialState));
+    dispatch(setAuthData(initialState));
   }
 };
 
-// export const getCaptcha = () => async (dispatch) => {
-//   const response = await securityAPI.getCaptchaUrl();
-//   const captcha = response.data.url;
+export const getCaptchaUrlThunk = () => async (dispatch) => {
+  const response = await securityAPI.getCaptchaUrl();
+  const captcha = response.data.url;
 
-//   dispatch(getCaptchaUrl(captcha));
-// };
+  dispatch(getCaptcha(captcha));
+}
