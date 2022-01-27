@@ -10,8 +10,7 @@ export const useStyles = makeStyles(() => ({
     color: 'white',
     paddingTop: theme.spacing(3),
     position: 'sticky',
-    top: 0,
-
+    top: '0',
     [theme.breakpoints.up('sm')]: {
       backgroundColor: 'white',
       color: '#555',
@@ -21,10 +20,24 @@ export const useStyles = makeStyles(() => ({
   item: {
     display: 'flex',
     alignItems: 'center',
+    color: '#000',
+    padding: '8px 16px',
+    textDecoration: 'none',
+    borderRadius: '4px',
+    // backgroundColor: '#8894d3',
     marginBottom: theme.spacing(4),
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(3),
       cursor: 'pointer',
+    },
+    '&:hover': {
+      color: '#000',
+      backgroundColor: '#c9c9c9',
+    },
+    '&:active': {
+      color: '#000',
+      backgroundColor: '#f44336',
+      textDecoration: 'none',
     },
   },
   icon: {

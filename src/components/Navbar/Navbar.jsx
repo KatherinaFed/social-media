@@ -5,9 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
   const css = useStyles();
-  let activeStyle = {
-    textDecoration: 'underline',
-  };
 
   return (
     <Container className={css.container}>
