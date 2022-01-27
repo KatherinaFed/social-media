@@ -7,6 +7,7 @@ import { Homepage } from './views/homePage/HomePage.jsx';
 import { Messages } from './views/messagesPage/MessagesPage';
 import { UsersList } from './views/usersPage/UsersList';
 import { UserPage } from './views/usersPage/UserPage';
+import { Login } from './views/loginPage/LoginPage';
 
 export const App = () => {
   return (
@@ -22,6 +23,7 @@ export const App = () => {
             <Route path="/messages" element={<Messages />} />
             <Route path="/users" element={<UsersList />} />
             <Route path="/user/:id" element={<UserPage />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Grid>
       </Grid>
