@@ -11,9 +11,14 @@ const authSlice = createSlice({
   },
   reducers: {
     setAuthData(state, action) {
+      const { email, id, login } = action.payload;
+      
       return {
         ...state,
-        ...action.payload
+        userId: id,
+        email,
+        login,
+        isAuth: true,
       };
     },
     getCaptcha(state, action) {
