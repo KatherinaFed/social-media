@@ -8,6 +8,7 @@ import { Messages } from './views/messagesPage/MessagesPage';
 import { UsersList } from './views/usersPage/UsersList';
 import { UserPage } from './views/usersPage/UserPage';
 import { Login } from './views/loginPage/LoginPage';
+import { Profile } from './views/profilePage/ProfilePage';
 
 export const App = () => {
   return (
@@ -19,10 +20,10 @@ export const App = () => {
         </Grid>
         <Grid item sm={10}>
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/users" element={<UsersList />} />
-            <Route path="/user/:id" element={<UserPage />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </Grid>

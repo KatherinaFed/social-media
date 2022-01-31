@@ -1,11 +1,10 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Container } from '@mui/material';
 import { useStyles } from './homeStyle';
+import { getProfileThunk } from '../../store/profile/profileThunk';
 
 export const Homepage = () => {
-  const css = useStyles();
-  return (
-    <Container className={css.container}>
-      
-    </Container>
-  );
+  return <Container>lalala</Container>;
 };
