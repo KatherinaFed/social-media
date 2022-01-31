@@ -1,5 +1,7 @@
-import React from 'react';
+export const UserPage = (props) => {
+  const { user } = props;
 
-export const UserPage = () => {
-  return <div>USER PAGE</div>;
-};
+  return (
+    <div>{user.name}</div>
+  )
+}

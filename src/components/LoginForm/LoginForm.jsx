@@ -9,16 +9,16 @@ import {
   Input,
   InputLabel,
   OutlinedInput,
-  Typography
+  Typography,
 } from '@mui/material';
 import { useFormik } from 'formik';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useStyles } from './loginFromStyle';
 import { logInSchema } from '../../utils/helpers/validation';
-import { store } from '../../store/index';
 import { login } from '../../store/auth/authThunk';
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
   const css = useStyles();
   const { captcha } = useSelector((state) => state.auth);
 
@@ -31,7 +31,7 @@ export const LoginForm = () => {
     },
     validationSchema: logInSchema,
     onSubmit: (values, { setStatus }) => {
-      store.dispatch(
+      dispatch(
         login(
           values.email,
           values.password,

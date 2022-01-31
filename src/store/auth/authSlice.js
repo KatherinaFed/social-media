@@ -18,7 +18,7 @@ const authSlice = createSlice({
         userId: id,
         email,
         login,
-        isAuth: true,
+        isAuth: id === 21114 && true,
       };
     },
     getCaptcha(state, action) {
