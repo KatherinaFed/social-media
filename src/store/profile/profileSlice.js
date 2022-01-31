@@ -8,18 +8,15 @@ const profileSlice = createSlice({
   },
   reducers: {
     setProfile(state, action) {
-      console.log(action.payload)
-      const { profile } = action.payload;
       return {
         ...state,
-        profile,
+        profile: action.payload,
       };
     },
     setStatus(state, action) {
-      const { status } = action.payload;
       return {
         ...state,
-        status,
+        status: action.payload,
       };
     },
   },

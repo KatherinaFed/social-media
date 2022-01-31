@@ -6,7 +6,7 @@ export const Login = () => {
   const { isAuth } = useSelector((state) => state.auth);
 
   if (isAuth) {
-    return <Navigate to="/" />;
+    return <Navigate to="/profile" />;
   }
 
   return (

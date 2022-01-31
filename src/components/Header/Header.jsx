@@ -2,13 +2,14 @@ import { AppBar, Avatar, Button, Toolbar, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from './headerStyle';
-import { store } from '../../store/index';
 import { logout } from '../../store/auth/authThunk';
 
 export const Header = () => {
   const css = useStyles();
   const dispatch = useDispatch();
+  
   const { login, isAuth } = useSelector((state) => state.auth);
+  const { profile } = useSelector((state) => state.profile);
 
   const logoutClick = () => {
     dispatch(logout());
@@ -20,9 +21,10 @@ export const Header = () => {
         <Typography variant="h6">Social App</Typography>
         {isAuth ? (
           <div className={css.icons}>
+            <Typography className={css.text} variant="h6">{login}</Typography>
             <Avatar
-              alt="Ekaterina"
-              src="./assets/person/user1.jpeg"
+              alt=""
+              src='{profile.photos.small}'
               className={css.icon}
             />
             <Button onClick={logoutClick} color="inherit" className={css.icon}>
@@ -30,7 +32,7 @@ export const Header = () => {
             </Button>
           </div>
         ) : (
-          <NavLink to="/login">
+          <NavLink to="/login" style={{ textDecoration: 'none' }}>
             <Button color="inherit" className={css.icon}>
               Login
             </Button>

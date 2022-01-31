@@ -14,6 +14,9 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
   },
   icon: {
-    marginRight: theme.spacing(2),
+    marginRight: '10px',
   },
+  text: {
+    marginRight: '20px'
+  }
 }));
