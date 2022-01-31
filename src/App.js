@@ -5,8 +5,7 @@ import { Header } from './components/Header/Header';
 import { Navbar } from './components/Navbar/Navbar';
 import { Homepage } from './views/homePage/HomePage.jsx';
 import { Messages } from './views/messagesPage/MessagesPage';
-import { UsersList } from './views/usersPage/UsersList';
-import { UserPage } from './views/usersPage/UserPage';
+import { UsersPage } from './views/usersPage/UsersPage';
 import { Login } from './views/loginPage/LoginPage';
 import { Profile } from './views/profilePage/ProfilePage';
 
@@ -22,8 +21,9 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<Profile />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
             <Route path="/messages" element={<Messages />} />
-            <Route path="/users" element={<UsersList />} />
+            <Route path="/users" element={<UsersPage />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </Grid>

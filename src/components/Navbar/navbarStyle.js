@@ -11,6 +11,7 @@ export const useStyles = makeStyles(() => ({
     paddingTop: theme.spacing(3),
     position: 'sticky',
     top: '0',
+    textDecoration: 'none',
     [theme.breakpoints.up('sm')]: {
       backgroundColor: 'white',
       color: '#555',
@@ -22,7 +23,6 @@ export const useStyles = makeStyles(() => ({
     alignItems: 'center',
     color: '#000',
     padding: '8px 16px',
-    textDecoration: 'none',
     borderRadius: '4px',
     // backgroundColor: '#8894d3',
     marginBottom: theme.spacing(4),

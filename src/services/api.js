@@ -43,7 +43,7 @@ export const usersAPI = {
 // PROFILES
 export const profileAPI = {
   getProfile(userId) {
-    debugger;
+    // debugger;
     return instance.get(`profile/${userId}`).then(({ data }) => data);
   },
   // getStatus(userId) {

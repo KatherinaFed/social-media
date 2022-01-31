@@ -8,7 +8,7 @@ export const Navbar = () => {
 
   return (
     <Container className={css.container}>
-      <NavLink to="/">
+      <NavLink to="/profile">
         <div className={css.item}>
           <Home className={css.icon} />
           <Typography className={css.text}>Homepage</Typography>
