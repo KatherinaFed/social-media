@@ -5,8 +5,9 @@ import { Avatar, Typography } from '@mui/material';
 import { useStyles } from './usersStyle';
 import { Paginator } from '../../components/Paginator/Paginator';
 import { getUsersThunk } from '../../store/users/usersThunk';
+import { withAuthNavigate } from '../../utils/helpers/withAuthNavigate';
 
-export const UsersPage = () => {
+const UsersPage = () => {
   const css = useStyles();
   const { users, pageSize, totalUsersCount, currentPage } = useSelector(
     (state) => state.users
@@ -54,3 +55,6 @@ export const UsersPage = () => {
     </>
   );
 };
+
+
+export const UsersContainer = withAuthNavigate(UsersPage);

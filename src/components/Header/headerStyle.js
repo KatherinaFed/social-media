@@ -12,11 +12,12 @@ export const useStyles = makeStyles(() => ({
   icons: {
     alignItems: 'center',
     display: 'flex',
+    marginRight: theme.spacing(1)
   },
   icon: {
     marginRight: '10px',
   },
   text: {
-    marginRight: '20px'
+    marginRight: '10px'
   }
 }));

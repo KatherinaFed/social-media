@@ -1,7 +1,4 @@
-import { createTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-
-const theme = createTheme();
 
 export const useStyles = makeStyles(() => ({
   container: {
@@ -28,5 +25,27 @@ export const useStyles = makeStyles(() => ({
     margin: 'auto',
     top: '150px',
     border: '3px solid white',
+    backgroundColor: 'white',
+  },
+  profileInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '40px',
+  },
+  username: {
+    fontSize: '24px',
+  },
+  status: {
+    fontWeight: '300',
+    marginTop: '10px',
+  },
+  profileDescription: {
+
+  },
+  text: {
+    fontWeight: '400',
+    fontSize: '18px'
   }
 }));
