@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { Grid } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Header, Navbar } from './components/index';
 import {
@@ -7,11 +9,24 @@ import {
   Profile,
   ProfileContainer,
   Messages,
-  Signup,
+  // Signup,
   UsersContainer,
 } from './views/index';
+import { initializeApp } from './store/app/appThunk';
+import { Preloader } from './components/Preloader/Preloader';
 
 export const App = () => {
+  const { initialized } = useSelector((state) => state.init);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeApp());
+  }, [dispatch]);
+
+  if (!initialized) {
+    return <Preloader />;
+  }
+
   return (
     <div>
       <Header />
