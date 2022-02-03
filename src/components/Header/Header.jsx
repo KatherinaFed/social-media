@@ -1,8 +1,6 @@
-import { AppBar, Avatar, Button, Toolbar, Typography } from '@mui/material';
-import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { AppBar, Toolbar, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { useStyles } from './headerStyle';
-
 
 export const Header = () => {
   const css = useStyles();

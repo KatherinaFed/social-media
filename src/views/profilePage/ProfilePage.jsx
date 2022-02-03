@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { withAuthNavigate } from '../../utils/helpers/withAuthNavigate';
-import { getProfileThunk } from '../../store/profile/profileThunk';
+import { getProfileThunk, getStatusThunk } from '../../store/profile/profileThunk';
 import { Profile } from './Profile';
 
 const ProfilePage = () => {
@@ -19,11 +19,11 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(getProfileThunk(id));
-    // getStatusThunk(id);
+    dispatch(getStatusThunk(id));
   }, [id, dispatch]);
 
   return (
-    <Profile />
+    <Profile isOwner={!useParams().id} />
   );
 };
 
