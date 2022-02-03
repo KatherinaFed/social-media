@@ -19,9 +19,25 @@ const profileSlice = createSlice({
         status: action.payload,
       };
     },
+    savePhoto(state, action) {
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.payload },
+      };
+    },
+    saveProfile(state, action) {
+      return {
+        ...state,
+        profile: { ...state.profile, properties: action.payload },
+      };
+    },
   },
 });
 
-
-export const { setProfile, setStatus } = profileSlice.actions;
+export const {
+  setProfile,
+  setStatus,
+  savePhoto,
+  saveProfile,
+} = profileSlice.actions;
 export default profileSlice.reducer;

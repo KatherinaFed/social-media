@@ -5,7 +5,7 @@ const instance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
   headers: {
-    'API-KEY': API_KEY,
+    "API-KEY": API_KEY,
   },
 });
 
@@ -46,12 +46,12 @@ export const profileAPI = {
     // debugger;
     return instance.get(`profile/${userId}`).then(({ data }) => data);
   },
-  // getStatus(userId) {
-  //   return instance.get(`profile/status/${userId}`);
-  // },
-  // updateStatus(status) {
-  //   return instance.put('profile/status/', { status: status });
-  // },
+  getStatus(userId) {
+    return instance.get(`profile/status/${userId}`);
+  },
+  updateStatus(status) {
+    return instance.put('profile/status/', { status: status });
+  },
   // savePhoto(photoFile) {
   //   const formData = new FormData();
   //   formData.append('image', photoFile);
@@ -62,7 +62,7 @@ export const profileAPI = {
   //     },
   //   });
   // },
-  // saveProfile(profileData) {
-  //   return instance.put('profile', profileData);
-  // },
+  saveProfile(profileData) {
+    return instance.put('profile', profileData);
+  },
 };

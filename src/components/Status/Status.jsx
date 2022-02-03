@@ -1,0 +1,57 @@
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Input } from '@mui/material';
+import { updateStatusThunk } from '../../store/profile/profileThunk';
+
+export const Status = (props) => {
+  const [editMode, setEditMode] = useState(false);
+  const [status, setStatus] = useState(props.status);
+  const dispatch = useDispatch();
+
+  // синхронизация происходит, когда меняется status
+  // синхронизация с локальным и глобальным state с помощью хука =>
+  useEffect(() => {
+    setStatus(props.status);
+  }, [props.status]); // зависимость от статуса
+
+  const activateEditMode = () => {
+    if (props.isOwner) {
+      setEditMode(true);
+    }
+  };
+
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    dispatch(updateStatusThunk(status));
+  };
+
+  const onStatusChange = (e) => {
+    setStatus(e.currentTarget.value);
+  };
+
+  return (
+    <>
+      {editMode ? (
+        <div>
+          <Input
+            data-testid="input"
+            autoFocus={true}
+            onChange={onStatusChange}
+            onBlur={deactivateEditMode}
+            value={status}
+            maxLength="20"
+          />
+          <span>{20 - status.length}/20</span>
+        </div>
+      ) : (
+        <span
+          style={{ fontWeight: '300', marginTop: '10px' }}
+          data-testid="spanStatus"
+          onClick={activateEditMode}
+        >
+          {status || 'Status is empty'}
+        </span>
+      )}
+    </>
+  );
+};

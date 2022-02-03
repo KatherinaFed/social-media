@@ -1,11 +1,18 @@
+import { useState } from 'react';
 import { Container } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useStyles } from './profileStyle';
 import { Preloader } from '../../components/Preloader/Preloader';
+import { Status } from '../../components/Status/Status';
+import coverImg from '../../assets/cover.jpeg';
+import userImg from '../../assets/users.png';
+import ProfileForm from '../../components/ProfileHelpers/ProfileForm/ProfileForm';
+import ProfileData from '../../components/ProfileHelpers/ProfileData/ProfileData';
 
-export const Profile = () => {
+export const Profile = ({ isOwner }) => {
   const css = useStyles();
-  const { profile } = useSelector((state) => state.profile);
+  const [editMode, setEditMode] = useState(false);
+  const { profile, status } = useSelector((state) => state.profile);
 
   if (!profile) {
     return <Preloader />;
@@ -14,19 +21,24 @@ export const Profile = () => {
   return (
     <Container className={css.container}>
       <div className={css.profileCover}>
-        <img className={css.coverImg} src="/assets/cover.jpeg" alt="" />
+        <img className={css.coverImg} src={coverImg} alt="" />
         <img
           className={css.userImg}
-          src={profile.photos.large || '/assets/users.png'}
+          src={profile.photos.large || userImg}
           alt=""
         />
       </div>
       <div className={css.profileInfo}>
         <h4 className={css.username}>{profile.fullName}</h4>
-        <span className={css.status}>Status: Hello my friends!</span>
+        <Status status={status} isOwner={isOwner} />
       </div>
       <div className={css.profileDescription}>
         <h4 className={css.text}>User information:</h4>
+        {editMode ? (
+          <ProfileForm setEditMode={setEditMode} />
+        ) : (
+          <ProfileData setEditMode={setEditMode} isOwner={isOwner} />
+        )}
       </div>
     </Container>
   );
