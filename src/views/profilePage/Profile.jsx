@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useStyles } from './profileStyle';
 import { Preloader } from '../../components/Preloader/Preloader';
@@ -32,14 +32,21 @@ export const Profile = ({ isOwner }) => {
         <h4 className={css.username}>{profile.fullName}</h4>
         <Status status={status} isOwner={isOwner} />
       </div>
-      <div className={css.profileDescription}>
-        <h4 className={css.text}>User information:</h4>
-        {editMode ? (
-          <ProfileForm setEditMode={setEditMode} />
-        ) : (
-          <ProfileData setEditMode={setEditMode} isOwner={isOwner} />
-        )}
-      </div>
+      <Grid container>
+        <Grid item sm={8}>
+          FEED
+        </Grid>
+        <Grid item sm={4}>
+          <div className={css.profileDescription}>
+            <h4 className={css.text}>User information:</h4>
+            {editMode ? (
+              <ProfileForm setEditMode={setEditMode} />
+            ) : (
+              <ProfileData setEditMode={setEditMode} isOwner={isOwner} />
+            )}
+          </div>
+        </Grid>
+      </Grid>
     </Container>
   );
 };

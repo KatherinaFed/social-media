@@ -1,41 +1,54 @@
 import { useSelector } from 'react-redux';
 import { Button } from '@mui/material';
+import { useStyles } from './profileDataStyle';
 import Contacts from './Contacts';
 import LookingForAJob from './LookingForAJob';
 
 const ProfileData = ({ setEditMode, isOwner }) => {
+  const css = useStyles();
   const { profile } = useSelector((state) => state.profile);
 
   return (
     <>
       {isOwner && (
-        <Button onClick={() => setEditMode(true)} variant="contained">
+        <Button
+          style={{ marginTop: '10px' }}
+          size="small"
+          onClick={() => setEditMode(true)}
+          variant="outlined"
+        >
           Edit profile
         </Button>
       )}
-      <div>
-        <h3>About me:</h3>
-        {profile.aboutMe}
+      <div className={css.profileItem}>
+        <h3 className={css.textItem}>About me:</h3>
+        <span className={css.textDescription}>{profile.aboutMe}</span>
       </div>
-      <div className="{css.contacts}">
-        <h3>Contacts:</h3>
-        {Object.keys(profile.contacts).map((key) => {
-          return (
-            <Contacts
-              key={key}
-              contactTitle={key}
-              contactValue={profile.contacts[key]}
-            />
-          );
-        })}
+      <div className={css.profileItem}>
+        <h3 className={css.textItem}>Contacts:</h3>
+        <span className={css.textDescription}>
+          {Object.keys(profile.contacts).map((key) => {
+            return (
+              <Contacts
+                key={key}
+                contactTitle={key}
+                contactValue={profile.contacts[key]}
+              />
+            );
+          })}
+        </span>
       </div>
-      <div>
-        <h3>I am looking for a job:</h3>
-        <LookingForAJob profile={profile} />
+      <div className={css.profileItem}>
+        <h3 className={css.textItem}>I am looking for a job:</h3>
+        <span className={css.textDescription}>
+          <LookingForAJob profile={profile} />
+        </span>
       </div>
-      <div>
-        <h3>Job description:</h3>
-        {profile.lookingForAJobDescription}
+      <div className={css.profileItem}>
+        <h3 className={css.textItem}>Job description:</h3>
+        <span className={css.textDescription}>
+          {profile.lookingForAJobDescription}
+        </span>
       </div>
     </>
   );

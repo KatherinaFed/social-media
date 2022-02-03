@@ -42,10 +42,10 @@ export const useStyles = makeStyles(() => ({
     marginTop: '10px',
   },
   profileDescription: {
-
+    marginTop: '20px'
   },
   text: {
-    fontWeight: '400',
-    fontSize: '18px'
+    fontWeight: '500',
+    fontSize: '18px',
   }
 }));
