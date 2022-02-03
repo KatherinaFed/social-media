@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { Grid } from '@mui/material';
+import { Container, Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,7 +16,16 @@ import {
 import { initializeApp } from './store/app/appThunk';
 import { Preloader } from './components/Preloader/Preloader';
 
+const useStyles = makeStyles(() => ({
+  appBody: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    border: '1px solid lightgrey',
+  },
+}));
+
 export const App = () => {
+  const css = useStyles();
   const { initialized } = useSelector((state) => state.init);
   const dispatch = useDispatch();
 
@@ -28,7 +38,7 @@ export const App = () => {
   }
 
   return (
-    <div>
+    <div className={css.appBody}>
       <Header />
       <Grid container>
         <Grid item sm={2}>

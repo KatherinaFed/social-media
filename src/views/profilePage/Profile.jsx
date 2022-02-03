@@ -8,6 +8,7 @@ import coverImg from '../../assets/cover.jpeg';
 import userImg from '../../assets/users.png';
 import ProfileForm from '../../components/ProfileHelpers/ProfileForm/ProfileForm';
 import ProfileData from '../../components/ProfileHelpers/ProfileData/ProfileData';
+import Share from '../../components/ProfileHelpers/Share/Share';
 
 export const Profile = ({ isOwner }) => {
   const css = useStyles();
@@ -33,10 +34,10 @@ export const Profile = ({ isOwner }) => {
         <Status status={status} isOwner={isOwner} />
       </div>
       <Grid container>
-        <Grid item sm={8}>
-          FEED
+        <Grid item sm={9}>
+          <Share />
         </Grid>
-        <Grid item sm={4}>
+        <Grid item sm={3}>
           <div className={css.profileDescription}>
             <h4 className={css.text}>User information:</h4>
             {editMode ? (
