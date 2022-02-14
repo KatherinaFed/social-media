@@ -10,6 +10,7 @@ import ProfileForm from '../../components/ProfileHelpers/ProfileForm/ProfileForm
 import ProfileData from '../../components/ProfileHelpers/ProfileData/ProfileData';
 import Share from '../../components/ProfileHelpers/Share/Share';
 import { savePhotoThunk } from '../../store/profile/profileThunk';
+import Posts from '../../components/ProfileHelpers/ProfilePosts/Posts';
 
 export const Profile = ({ isOwner }) => {
   const css = useStyles();
@@ -71,6 +72,7 @@ export const Profile = ({ isOwner }) => {
       <Grid container>
         <Grid item sm={9}>
           <Share />
+          <Posts />
         </Grid>
         <Grid item sm={3}>
           <div className={css.profileDescription}>
