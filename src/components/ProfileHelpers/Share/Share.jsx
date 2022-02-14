@@ -1,43 +1,84 @@
-import { useSelector } from 'react-redux';
-import { Container } from '@mui/material';
-import css from './share.css';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { PermMedia, Label, Room, EmojiEmotions } from '@mui/icons-material';
+import { useFormik } from 'formik';
+import { useStyles } from './shareStyle';
+import { addPost } from '../../../store/profile/profileSlice';
+import userImg from '../../../assets/users.png';
 
 const Share = () => {
+  const css = useStyles();
   const { profile } = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+
+  const textInput = React.createRef();
+
+  const { handleChange, handleSubmit, values, isValid, dirty } = useFormik({
+    initialValues: {
+      newPostText: '',
+    },
+    onSubmit: ({ newPostText }, { resetForm }) => {
+      dispatch(addPost(newPostText));
+
+      resetForm();
+    },
+  });
+
   return (
-    <div className="share">
-      <div className="shareWrapper">
-        <div className="shareTop">
-          <img className="shareProfileImg" src={profile.photos.small} alt="" />
-          <input
-            placeholder={`What is in your mind ${profile.fullName}?`}
-            className="shareInput"
-          />
-        </div>
-        <hr className="shareHr" />
-        <div className="shareBottom">
-          <div className="shareOptions">
-            <div className="shareOption">
-              {/* <PermMedia htmlColor="tomato" className="shareIcon"/> */}
-              <span className="shareOptionText">Photo or Video</span>
-            </div>
-            <div className="shareOption">
-              {/* <Label htmlColor="blue" className="shareIcon"/> */}
-              <span className="shareOptionText">Tag</span>
-            </div>
-            <div className="shareOption">
-              {/* <Room htmlColor="green" className="shareIcon"/> */}
-              <span className="shareOptionText">Location</span>
-            </div>
-            <div className="shareOption">
-              {/* <EmojiEmotions htmlColor="goldenrod" className="shareIcon"/> */}
-              <span className="shareOptionText">Feelings</span>
-            </div>
+    <form onSubmit={handleSubmit}>
+      <div className={css.share}>
+        <div className="shareWrapper">
+          <div className={css.shareTop}>
+            <img
+              className={css.shareProfileImg}
+              src={profile.photos.small || userImg}
+              alt=""
+            />
+            <input
+              id="newPostText"
+              name="newPostText"
+              type="text"
+              onChange={handleChange}
+              ref={textInput}
+              value={values.newPostText}
+              placeholder={`What is in your mind ${profile.fullName}?`}
+              className={css.shareInput}
+            />
           </div>
-          <button className="shareButton">Share</button>
+          <hr className={css.shareHr} />
+          <div className={css.shareBottom}>
+            <div className={css.shareOptions}>
+              <div className={css.shareOption}>
+                <PermMedia htmlColor="tomato" className={css.shareIcon} />
+                <span className={css.shareOptionText}>Photo or Video</span>
+              </div>
+              <div className={css.shareOption}>
+                <Label htmlColor="blue" className={css.shareIcon} />
+                <span className={css.shareOptionText}>Tag</span>
+              </div>
+              <div className={css.shareOption}>
+                <Room htmlColor="green" className={css.shareIcon} />
+                <span className={css.shareOptionText}>Location</span>
+              </div>
+              <div className={css.shareOption}>
+                <EmojiEmotions
+                  htmlColor="goldenrod"
+                  className={css.shareIcon}
+                />
+                <span className={css.shareOptionText}>Feelings</span>
+              </div>
+            </div>
+            <button
+              type="submit"
+              disabled={!isValid || !dirty}
+              className={css.shareButton}
+            >
+              Share
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
