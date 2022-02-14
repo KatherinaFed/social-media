@@ -1,4 +1,8 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles, styled } from '@mui/styles';
+
+export const Input = styled('input')({
+  display: 'none',
+});
 
 export const useStyles = makeStyles(() => ({
   container: {
@@ -14,7 +18,28 @@ export const useStyles = makeStyles(() => ({
     height: '250px',
     objectFit: 'cover'
   },
+  spanImg: {
+    textAlign: 'center',
+    position: 'absolute',
+    left: '0',
+    right: '0',
+    margin: 'auto',
+    top: '150px',
+  },
   userImg: {
+    width: '200px',
+    height: '200px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    // position: 'absolute',
+    // left: '0',
+    // right: '0',
+    // margin: 'auto',
+    // top: '150px',
+    border: '3px solid white',
+    backgroundColor: 'white',
+  },
+  userImgDef: {
     width: '200px',
     height: '200px',
     borderRadius: '50%',

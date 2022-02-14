@@ -25,7 +25,7 @@ export const saveProfileThunk = (profileData, setStatus) => async (
   }
 };
 
-// SAVE PHOTO
+// SAVE PHOTO PROFILE
 export const savePhotoThunk = (file) => async (dispatch) => {
   const response = await profileAPI.savePhoto(file);
 
