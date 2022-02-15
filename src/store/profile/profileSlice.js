@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import _ from 'lodash';
 
 const profileSlice = createSlice({
   name: 'profile',
@@ -37,9 +38,9 @@ const profileSlice = createSlice({
     },
     addPost(state, action) {
       const newPost = {
-        id: 3,
+        id: _.uniqueId(),
         message: action.payload,
-        likes: 5,
+        likes: Math.floor(Math.random() * 51),
       };
 
       return {

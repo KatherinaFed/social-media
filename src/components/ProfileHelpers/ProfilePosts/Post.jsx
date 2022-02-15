@@ -20,8 +20,8 @@ const Post = ({ message, likes, photo }) => {
   return (
     <div className={css.postWrapper}>
       <div className={css.messageWrapper}>
-        <img className={css.postImg} src={photo || userImg} alt="" />
-        <span className={css.message}>{message}</span>
+        <img className={css.postImg} src={photo || userImg} alt="userImage" />
+        <span>{message}</span>
       </div>
       <div className={css.likesWrapper}>
         <img
