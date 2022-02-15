@@ -59,11 +59,6 @@ export const Profile = ({ isOwner }) => {
             alt=""
           />
         )}
-        {/* <img
-          className={css.userImg}
-          src={profile.photos.large || userImg}
-          alt=""
-        /> */}
       </div>
       <div className={css.profileInfo}>
         <h4 className={css.username}>{profile.fullName}</h4>

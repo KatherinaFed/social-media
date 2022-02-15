@@ -22,7 +22,7 @@ const Contacts = ({ contactTitle, contactValue }) => {
   return (
     contactValue && (
       <a href={contactValue}>
-        <img src={icons[contactTitle]} alt="icon" />
+        <img style={{ padding: 5 }} src={icons[contactTitle]} alt="icon" />
       </a>
     )
   );

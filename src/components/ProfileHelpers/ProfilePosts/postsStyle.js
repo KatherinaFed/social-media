@@ -20,9 +20,6 @@ export const useStylesPost = makeStyles(() => ({
     objectFit: 'cover',
     marginRight: '10px',
   },
-  // message: {
-  //   marginRight: '5px'
-  // },
   likesWrapper: {
     display: 'flex',
     alignItems: 'center',
