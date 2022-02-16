@@ -16,7 +16,7 @@ export const useStyles = makeStyles(() => ({
   coverImg: {
     width: '100%',
     height: '250px',
-    objectFit: 'cover'
+    objectFit: 'cover',
   },
   spanImg: {
     textAlign: 'center',
