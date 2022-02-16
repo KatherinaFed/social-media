@@ -3,6 +3,7 @@ import authReducer from './auth/authSlice';
 import usersReducer from './users/usersSlice';
 import profileReducer from './profile/profileSlice';
 import initReducer from './app/appSlice';
+import messageReducer from './messages/messageSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     auth: authReducer,
     users: usersReducer,
     profile: profileReducer,
+    messages: messageReducer,
   },
 });

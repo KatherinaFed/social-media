@@ -1,13 +1,11 @@
-import { createTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-
-const theme = createTheme();
+import { theme } from '../../utils/helpers/palette';
 
 export const useStyles = makeStyles(() => ({
   toolbar: {
     display: 'flex',
     justifyContent: 'space-between',
-    backgroundColor: '#6074d8'
+    backgroundColor: theme.palette.primary.main,
   },
   icons: {
     alignItems: 'center',
