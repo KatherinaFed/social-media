@@ -9,7 +9,7 @@ import {
   Login,
   Profile,
   ProfileContainer,
-  MessageContainer,
+  Message,
   // Signup,
   UsersContainer,
 } from './views/index';
@@ -50,7 +50,7 @@ export const App = () => {
             <Route path="/profile" element={<ProfileContainer />}>
               <Route path="/profile/:id" element={<Profile />} />
             </Route>
-            <Route path="/messages" element={<MessageContainer />} />
+            <Route path="/messages" element={<Message />} />
             <Route path="/users" element={<UsersContainer />} />
             <Route path="/login" element={<Login />} />
           </Routes>

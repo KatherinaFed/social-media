@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import _ from 'lodash';
+import { timing } from '../../utils/helpers/time';
 
 const messageSlice = createSlice({
   name: 'messages',
@@ -34,7 +35,7 @@ const messageSlice = createSlice({
       },
       {
         userId: 5,
-        userName: 'Oliver',
+        userName: 'Alex',
         isOnline: true,
         userAvatar: 'https://avatarfiles.alphacoders.com/168/thumb-1920-168291.png',
       },
@@ -46,16 +47,18 @@ const messageSlice = createSlice({
       },
     ],
     messages: [
-      { id: 1, message: 'Hi! What`s up?', date: '17:02' },
-      { id: 2, message: 'I`m fine, I got a job!)', date: '17:43' },
-      { id: 3, message: 'Congratulations!', date: '17:50' },
+      { id: 1, userName: 'Dmitrii Z.', message: 'Hi! What`s up?', date: '17:02' },
+      { id: 2, userName: 'me', message: 'I`m fine, I got a job!)', date: '17:43' },
+      { id: 3, userName: 'Dmitrii Z.', message: 'Congratulations!', date: '17:50' },
     ],
   },
   reducers: {
     sendMessage(state, action) {
       const newMessage = {
-        id: _.uniqueId(),
+        id: _.uniqueId('k'),
+        userName: 'me',
         message: action.payload,
+        date: timing(),
       };
 
       return {
