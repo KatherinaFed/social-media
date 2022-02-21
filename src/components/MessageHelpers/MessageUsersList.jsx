@@ -1,13 +1,12 @@
 import { useSelector } from 'react-redux';
 import {
   Avatar,
-  List,
   ListItem,
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
 
-const MessageUserItem = () => {
+const MessageUsersList = () => {
   const { chats } = useSelector((state) => state.messages);
 
   return (
@@ -25,4 +24,4 @@ const MessageUserItem = () => {
   );
 };
 
-export default MessageUserItem;
+export default MessageUsersList;
