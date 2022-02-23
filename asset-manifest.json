@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/social-media/static/js/main.65070baa.js",
+    "static/media/cover.jpeg": "/social-media/static/media/cover.005cd77acfb86b0937e1.jpeg",
+    "static/media/users.png": "/social-media/static/media/users.fb653606e5a348e7bc76.png",
+    "index.html": "/social-media/index.html",
+    "main.65070baa.js.map": "/social-media/static/js/main.65070baa.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.65070baa.js"
+  ]
+}
