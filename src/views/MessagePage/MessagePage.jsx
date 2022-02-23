@@ -13,8 +13,8 @@ import {
   Typography,
 } from '@mui/material';
 import { withAuthNavigate } from '../../utils/helpers/withAuthNavigate';
-import MessageUsersList from '../../components/MessageHelpers/MessageUsersList';
-import MessageConversation from '../../components/MessageHelpers/MessageConversation';
+import Chats from '../../components/MessageHelpers/Chats';
+import Messages from '../../components/MessageHelpers/Messages';
 import MessageForm from '../../components/MessageHelpers/MessageForm';
 
 const useStyles = makeStyles({
@@ -66,57 +66,42 @@ const MessagePage = () => {
       <Container>
         <Paper elevation={5}>
           <Box p={3}>
-            <Typography variant="h4">Happy Chatting!</Typography>
+            <Typography variant="h4" textAlign="center">
+              Happy Chatting!
+            </Typography>
             <Divider />
-            <Grid container spacing={4} alignItems="center">
+            <Grid container spacing={2} style={{ marginTop: 'auto' }}>
               <Grid
                 item
                 xs={8}
-                style={{ maxHeight: '18rem', overflow: 'auto' }}
+                style={{ maxHeight: '40vh', overflow: 'auto', padding: '10px' }}
               >
                 <List>
-                  <MessageConversation />
+                  <Messages />
                   <ListItem ref={scrollBottomRef} />
                 </List>
               </Grid>
-              <Grid item xs={4}>
-                <MessageUsersList />
+              <Grid
+                item
+                xs={4}
+                style={{ backgroundColor: theme.palette.primary.light }}
+              >
+                <Chats />
               </Grid>
-              <Grid item xs={8}>
+              <Grid
+                item
+                xs={8}
+                style={{ textAlign: 'center', padding: '10px' }}
+              >
                 <MessageForm />
               </Grid>
-              <Grid item xs={1}></Grid>
             </Grid>
+            <Grid container spacing={2} style={{ marginTop: 'auto' }}></Grid>
           </Box>
         </Paper>
       </Container>
     </>
   );
-  // return (
-  //   <div className={classes.table}>
-  //     <Grid container>
-  //       <Grid item xs={12}>
-  //         <Typography variant="h5" className={classes.headBG}>
-  //           Chat
-  //         </Typography>
-  //       </Grid>
-  //     </Grid>
-  //     <Grid container component={Paper} className={classes.messageArea}>
-  //       <Grid item xs={8}>
-  //         <MessageConversation />
-  //       </Grid>
-  //       <Grid item xs={4} className={classes.chatSection}>
-  //         <MessageUsersList />
-  //       </Grid>
-  //       <Divider />
-  //       <div>
-  //         <footer className={classes.footer}>
-  //           <MessageForm />
-  //         </footer>
-  //       </div>
-  //     </Grid>
-  //   </div>
-  // );
 };
 
 export const Message = withAuthNavigate(MessagePage);

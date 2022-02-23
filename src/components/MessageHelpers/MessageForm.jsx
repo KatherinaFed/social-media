@@ -1,16 +1,17 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { sendMessage } from '../../store/messages/messageSlice';
 import { Send } from '@mui/icons-material';
 import { Box, FormControl, TextField, Button } from '@mui/material';
 
 const MessageForm = () => {
+  const { currentChatId } = useSelector((state) => state.messages);
   const dispatch = useDispatch();
 
   const ENTER_KEY_CODE = 13;
 
-  const { handleChange, handleSubmit, values } = useFormik({
+  const { handleChange, handleSubmit, isSubmitting, values } = useFormik({
     initialValues: {
       message: '',
     },
@@ -28,20 +29,27 @@ const MessageForm = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit}>
-      <FormControl fullWidth>
+    <Box component="form" onSubmit={handleSubmit} className="form-box">
+      <FormControl style={{ width: '80%' }}>
         <TextField
           id="message"
           name="message"
           type="text"
           label="Type your message..."
           variant="outlined"
+          size="small"
           onKeyDown={() => handleEnterKey}
           onChange={handleChange}
+          disabled={isSubmitting}
           value={values.message}
         />
       </FormControl>
-      <Button type="submit" variant="contained">
+      <Button
+        disabled={values.message === '' || isSubmitting}
+        style={{ marginLeft: '5px' }}
+        type="submit"
+        variant="contained"
+      >
         <Send />
       </Button>
     </Box>
