@@ -22,7 +22,6 @@ const useStyles = makeStyles({
     minWidth: 650,
   },
   chatSection: {
-    // width: '100%',
     height: '50vh',
     backgroundColor: theme.palette.primary.light,
   },
@@ -43,14 +42,11 @@ const useStyles = makeStyles({
     display: 'flex',
     border: 'none',
     padding: '0 8px',
-    // padding: '20px',
     alignItems: 'flex-end',
   },
 });
 
 const MessagePage = () => {
-  // const css = useStyles();
-  const classes = useStyles();
   const { messages } = useSelector((state) => state.messages);
 
   const scrollBottomRef = useRef(null);
@@ -74,7 +70,7 @@ const MessagePage = () => {
               <Grid
                 item
                 xs={8}
-                style={{ maxHeight: '40vh', overflow: 'auto', padding: '10px' }}
+                style={{ height: '50vh', overflow: 'auto', padding: '10px' }}
               >
                 <List>
                   <Messages />
@@ -84,7 +80,10 @@ const MessagePage = () => {
               <Grid
                 item
                 xs={4}
-                style={{ backgroundColor: theme.palette.primary.light }}
+                style={{
+                  backgroundColor: theme.palette.primary.light,
+                  padding: '10px',
+                }}
               >
                 <Chats />
               </Grid>
@@ -96,7 +95,6 @@ const MessagePage = () => {
                 <MessageForm />
               </Grid>
             </Grid>
-            <Grid container spacing={2} style={{ marginTop: 'auto' }}></Grid>
           </Box>
         </Paper>
       </Container>

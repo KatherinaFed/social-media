@@ -10,7 +10,6 @@ import {
   Profile,
   ProfileContainer,
   Message,
-  // Signup,
   UsersContainer,
 } from './views/index';
 import { initializeApp } from './store/app/appThunk';
