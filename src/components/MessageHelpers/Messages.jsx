@@ -26,13 +26,12 @@ const Messages = () => {
 
   return (
     <>
-      {messages.map(({ chatId, chatMsg }) => {
+      {messages.map(({ chatId, userName, message, date }, index) => {
         const chatActive = chatId === currentChatId;
 
         return (
-          chatActive &&
-          chatMsg.map(({ userName, message, date }, index) => (
-            <>
+          chatActive && (
+            <div key={index}>
               <Typography
                 style={{
                   fontWeight: 500,
@@ -45,20 +44,20 @@ const Messages = () => {
                 {date}
               </Typography>
               {userName === 'me' ? (
-                <ListItem key={index} className={css.right}>
+                <ListItem className={css.right}>
                   <ListItemText align="right">
                     <Typography fontWeight="300">{message}</Typography>
                   </ListItemText>
                 </ListItem>
               ) : (
-                <ListItem key={index} className={css.left}>
+                <ListItem className={css.left}>
                   <ListItemText align="left">
                     <Typography fontWeight="300">{message}</Typography>
                   </ListItemText>
                 </ListItem>
               )}
-            </>
-          ))
+            </div>
+          )
         );
       })}
     </>

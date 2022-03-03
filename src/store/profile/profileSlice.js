@@ -8,7 +8,11 @@ const profileSlice = createSlice({
     status: '',
     posts: [
       { id: 1, message: 'My first post', likes: 15 },
-      { id: 2, message: 'Hey guys! Do you wanna to go to the party today?', likes: 20 },
+      {
+        id: 2,
+        message: 'Hey guys! Do you wanna to go to the party today?',
+        likes: 20,
+      },
     ],
   },
   reducers: {
@@ -38,7 +42,7 @@ const profileSlice = createSlice({
     },
     addPost(state, action) {
       const newPost = {
-        id: _.uniqueId(),
+        id: _.uniqueId('k'),
         message: action.payload,
         likes: Math.floor(Math.random() * 51),
       };
@@ -46,6 +50,12 @@ const profileSlice = createSlice({
       return {
         ...state,
         posts: [...state.posts, newPost],
+      };
+    },
+    deletePost(state, action) {
+      return {
+        ...state,
+        posts: state.posts.filter((p) => p.id !== action.payload),
       };
     },
   },
@@ -57,5 +67,6 @@ export const {
   savePhoto,
   saveProfile,
   addPost,
+  deletePost,
 } = profileSlice.actions;
 export default profileSlice.reducer;

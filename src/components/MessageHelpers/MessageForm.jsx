@@ -6,7 +6,6 @@ import { Send } from '@mui/icons-material';
 import { Box, FormControl, TextField, Button } from '@mui/material';
 
 const MessageForm = () => {
-  const { currentChatId } = useSelector((state) => state.messages);
   const dispatch = useDispatch();
 
   const ENTER_KEY_CODE = 13;
