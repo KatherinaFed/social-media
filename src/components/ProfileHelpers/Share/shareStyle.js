@@ -29,10 +29,11 @@ export const useStyles = makeStyles(() => ({
     width: '80%',
     '&:focus': {
       outline: 'none'
-    }
+    },
+    height: '20px'
   },
   shareHr: {
-    margin: '20px',
+    margin: '10px',
   },
   shareBottom: {
     display: 'flex',

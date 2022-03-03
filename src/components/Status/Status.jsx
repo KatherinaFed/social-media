@@ -1,9 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { makeStyles } from '@mui/styles';
 import { Input } from '@mui/material';
 import { updateStatusThunk } from '../../store/profile/profileThunk';
 
+export const useStyles = makeStyles(() => ({
+  username: {
+    fontSize: '24px',
+  },
+  status: {
+    fontWeight: '300',
+    marginTop: '10px',
+  },
+}));
+
 export const Status = (props) => {
+  const css = useStyles();
   const [editMode, setEditMode] = useState(false);
   const [status, setStatus] = useState(props.status);
   const dispatch = useDispatch();
@@ -46,6 +58,7 @@ export const Status = (props) => {
       ) : (
         <span
           style={{ fontWeight: '300', marginTop: '10px' }}
+          // className={css.status}
           data-testid="spanStatus"
           onClick={activateEditMode}
         >

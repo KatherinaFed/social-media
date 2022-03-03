@@ -7,9 +7,11 @@ const Posts = () => {
   const css = useStylesPosts();
   const { posts, profile } = useSelector((state) => state.profile);
 
-  const postElements = posts.map(({ id, message, likes }) => (
+  const postElements = posts.map(({ id, message, likes }, index) => (
     <Post
-      key={id}
+      key={index}
+      id={id}
+      username={profile.fullName}
       message={message}
       likes={likes}
       photo={profile.photos.small}

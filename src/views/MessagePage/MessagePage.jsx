@@ -60,7 +60,7 @@ const MessagePage = () => {
   return (
     <>
       <Container>
-        <Paper elevation={5}>
+        <Paper elevation={5} style={{ marginTop: '20px' }}>
           <Box p={3}>
             <Typography variant="h4" textAlign="center">
               Happy Chatting!

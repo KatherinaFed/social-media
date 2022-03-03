@@ -10,23 +10,15 @@ const messageSlice = createSlice({
     sendMessage(state, action) {
       const newMessage = {
         id: _.uniqueId('k'),
+        chatId: state.currentChatId,
         userName: 'me',
         message: action.payload,
         date: timing(),
       };
 
-      // console.log('ACTIVE CHAT ID: ', state.currentChatId);
-      // console.log('MESSAGES: ', state.messages)
-
       return {
         ...state,
-        messages: [
-          ...state.messages,
-          {
-            chatId: state.currentChatId,
-            chatMsg: [{ ...newMessage }],
-          },
-        ],
+        messages: [...state.messages, newMessage],
       };
     },
     setActiveChat(state, action) {

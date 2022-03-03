@@ -16,38 +16,33 @@ const Chats = () => {
     dispatch(setActiveChat(id));
   };
 
-  const renderChats = () => {
-    const listOfChats = chats.map(
-      ({ id, userName, isOnline, userAvatar }, index) => {
-        const activeChat = id === currentChatId;
-        const buttonStyle = activeChat ? true : false;
+  const listOfChats = chats.map(
+    ({ id, userName, isOnline, userAvatar }, index) => {
+      const activeChat = id === currentChatId;
+      const buttonStyle = activeChat ? true : false;
 
-        return (
-          <>
-            <ListItemButton
-              style={{
-                backgroundColor: buttonStyle && theme.palette.primary.main,
-                color: buttonStyle && theme.palette.primary.contrastText,
-              }}
-              selected={buttonStyle}
-              key={index}
-              onClick={setActive(id)}
-            >
-              <ListItemIcon>
-                <Avatar alt={userName} src={userAvatar} />
-              </ListItemIcon>
-              <ListItemText primary={userName}>{userName}</ListItemText>
-              {isOnline && <ListItemText secondary="online" align="right" />}
-            </ListItemButton>
-          </>
-        );
-      }
-    );
+      return (
+        <div key={index}>
+          <ListItemButton
+            style={{
+              backgroundColor: buttonStyle && theme.palette.primary.main,
+              color: buttonStyle && theme.palette.primary.contrastText,
+            }}
+            selected={buttonStyle}
+            onClick={setActive(id)}
+          >
+            <ListItemIcon>
+              <Avatar alt={userName} src={userAvatar} />
+            </ListItemIcon>
+            <ListItemText primary={userName}>{userName}</ListItemText>
+            {isOnline && <ListItemText secondary="online" align="right" />}
+          </ListItemButton>
+        </div>
+      );
+    }
+  );
 
-    return chats ? listOfChats : null;
-  };
-
-  return renderChats();
+  return chats ? listOfChats : null;
 };
 
 export default Chats;
