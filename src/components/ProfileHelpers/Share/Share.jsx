@@ -6,9 +6,10 @@ import { useStyles } from './shareStyle';
 import { addPost } from '../../../store/profile/profileSlice';
 import userImg from '../../../assets/users.png';
 
-const Share = () => {
+const Share = ({ isOwner }) => {
   const css = useStyles();
-  const { profile } = useSelector((state) => state.profile);
+
+  const { profile, avatar } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
   const textInput = React.createRef();
@@ -24,6 +25,10 @@ const Share = () => {
     },
   });
 
+  const placeholderText = isOwner
+    ? `What is in your mind ${profile.fullName}?`
+    : `Type something ${profile.fullName}...`;
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={css.share}>
@@ -31,7 +36,7 @@ const Share = () => {
           <div className={css.shareTop}>
             <img
               className={css.shareProfileImg}
-              src={profile.photos.small || userImg}
+              src={avatar || userImg}
               alt=""
             />
             <input
@@ -41,7 +46,7 @@ const Share = () => {
               onChange={handleChange}
               ref={textInput}
               value={values.newPostText}
-              placeholder={`What is in your mind ${profile.fullName}?`}
+              placeholder={placeholderText}
               className={css.shareInput}
             />
           </div>

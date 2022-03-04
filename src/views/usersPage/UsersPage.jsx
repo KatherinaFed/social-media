@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { Avatar, Typography } from '@mui/material';
 import { useStyles } from './usersStyle';
 import { Paginator } from '../../components/Paginator/Paginator';
 import { getUsersThunk } from '../../store/users/usersThunk';
 import { withAuthNavigate } from '../../utils/helpers/withAuthNavigate';
+import UserCard from '../../components/UserHelpers/UserCard';
 
 const UsersPage = () => {
   const css = useStyles();
@@ -32,29 +31,11 @@ const UsersPage = () => {
       />
       {users.map((user, i) => (
         <div key={i} className={css.item}>
-          <NavLink
-            to={`/profile/${user.id}`}
-            style={{ textDecoration: 'none' }}
-          >
-            <Avatar
-              alt=""
-              src={user.photos.small}
-              className={css.avatar}
-              style={{ width: 56, height: 56 }}
-            />
-            <Typography
-              variant="text"
-              className={css.text}
-              style={{ fontSize: '16px', color: 'black' }}
-            >
-              {user.name}
-            </Typography>
-          </NavLink>
+          <UserCard user={user} />
         </div>
       ))}
     </>
   );
 };
-
 
 export const UsersContainer = withAuthNavigate(UsersPage);

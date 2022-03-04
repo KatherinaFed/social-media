@@ -3,19 +3,17 @@ import { makeStyles } from '@mui/styles';
 export const useStylesPost = makeStyles(() => ({
   postWrapper: {
     width: '90%',
-    height: '90px',
+    minHeight: '90px',
     borderRadius: '10px',
-    marginTop: '20px',
+    margin: '20px 0',
     padding: '20px',
     WebkitBoxShadow: '0px 0px 16px -8px rgba(0, 0, 0, 0.68)',
     boxShadow: '0px 0px 16px -8px rgba(0, 0, 0, 0.68)',
   },
   deletePost: {
-    // display: 'flex',
-    // alignItems: 'center',
-    float: 'right'
+    float: 'right',
   },
-  messageWrapper: {
+  infoWrapper: {
     display: 'flex',
     alignItems: 'center',
   },
@@ -28,23 +26,25 @@ export const useStylesPost = makeStyles(() => ({
   username: {
     fontSize: '16px',
     fontWeight: '600',
-    margin: '0 10px',
+    // margin: '0 10px',
   },
-  message: {
+  messageWrapper: {
     display: 'flex',
     alignItems: 'center',
-    padding: '10px'
+    padding: '10px',
+  },
+  messageText: {
+    fontWeight: '300',
   },
   likesWrapper: {
     display: 'flex',
     alignItems: 'center',
-    float: 'right'
+    // padding: '10px 0 0 10px',
   },
   likeIcon: {
     width: '26px',
     height: '26px',
     marginRight: '5px',
-    marginBottom: '10px',
     cursor: 'pointer',
   },
   likeCounter: {

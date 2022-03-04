@@ -6,7 +6,4 @@ export const useStyles = makeStyles(() => ({
     padding: '10px',
     marginLeft: '10px',
   },
-  avatar: {
-    marginBottom: '10px',
-  },
 }));

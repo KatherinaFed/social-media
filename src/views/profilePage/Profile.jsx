@@ -45,11 +45,7 @@ export const Profile = ({ isOwner }) => {
               aria-label="upload picture"
               component="span"
             >
-              <img
-                className={css.userImg}
-                src={profile.photos.large}
-                alt=""
-              />
+              <img className={css.userImg} src={profile.photos.large} alt="" />
             </IconButton>
           </label>
         ) : (
@@ -66,8 +62,8 @@ export const Profile = ({ isOwner }) => {
       </div>
       <Grid container>
         <Grid item sm={9}>
-          <Share />
-          <Posts />
+          <Share isOwner={isOwner} />
+          <Posts isOwner={isOwner} />
         </Grid>
         <Grid item sm={3}>
           <div className={css.profileDescription}>
