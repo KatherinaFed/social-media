@@ -14,6 +14,7 @@ const profileSlice = createSlice({
         likes: 20,
       },
     ],
+    avatar: '',
   },
   reducers: {
     setProfile(state, action) {
@@ -32,6 +33,12 @@ const profileSlice = createSlice({
       return {
         ...state,
         profile: { ...state.profile, photos: action.payload },
+      };
+    },
+    saveAvatarOwner(state, action) {
+      return {
+        ...state,
+        avatar: action.payload,
       };
     },
     saveProfile(state, action) {
@@ -65,6 +72,7 @@ export const {
   setProfile,
   setStatus,
   savePhoto,
+  saveAvatarOwner,
   saveProfile,
   addPost,
   deletePost,

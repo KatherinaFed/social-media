@@ -8,7 +8,7 @@ import { deletePost } from '../../../store/profile/profileSlice';
 import { IconButton } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 
-const Post = ({ id, username, message, likes, photo }) => {
+const Post = ({ id, username, message, likes, photo, photoOwner, isOwner }) => {
   const css = useStylesPost();
   const dispatch = useDispatch();
 
@@ -28,21 +28,23 @@ const Post = ({ id, username, message, likes, photo }) => {
 
   return (
     <div className={css.postWrapper}>
-      <div className={css.deletePost}>
-        <IconButton
-          aria-label="delete"
-          size="small"
-          onClick={deleteHandler(id)}
-        >
-          <Delete />
-        </IconButton>
-      </div>
-      <div className={css.messageWrapper}>
+      {isOwner && (
+        <div className={css.deletePost}>
+          <IconButton
+            aria-label="delete"
+            size="small"
+            onClick={deleteHandler(id)}
+          >
+            <Delete />
+          </IconButton>
+        </div>
+      )}
+      <div className={css.infoWrapper}>
         <img className={css.postImg} src={photo || userImg} alt="userImage" />
         <span className={css.username}>{username}</span>
       </div>
-      <div className={css.message}>
-        <span>{message}</span>
+      <div className={css.messageWrapper}>
+        <p className={css.messageText}>{message}</p>
       </div>
       <div className={css.likesWrapper}>
         <img
