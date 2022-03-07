@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useStyles } from './usersStyle';
+// import { useStyles } from './usersStyle';
 import { Paginator } from '../../components/Paginator/Paginator';
 import { getUsersThunk } from '../../store/users/usersThunk';
 import { withAuthNavigate } from '../../utils/helpers/withAuthNavigate';
 import UserCard from '../../components/UserHelpers/UserCard';
+import { Container } from '@mui/material';
 
 const UsersPage = () => {
-  const css = useStyles();
   const { users, pageSize, totalUsersCount, currentPage } = useSelector(
     (state) => state.users
   );
@@ -30,10 +30,15 @@ const UsersPage = () => {
         onPageChanged={onPageChanged}
       />
       {users.map((user, i) => (
-        <div key={i} className={css.item}>
+        <Container key={i} style={{ display: 'flex' }}>
           <UserCard user={user} />
-        </div>
+        </Container>
       ))}
+      <Paginator
+        pageSize={pageSize}
+        totalUsersCount={totalUsersCount}
+        onPageChanged={onPageChanged}
+      />
     </>
   );
 };
