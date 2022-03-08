@@ -42,10 +42,12 @@ export const Navbar = () => {
           <Typography className={css.text}>Users</Typography>
         </div>
       </NavLink>
-      <div className={css.item}>
-        <Settings className={css.icon} />
-        <Typography className={css.text}>Settings</Typography>
-      </div>
+      <NavLink to="/settings" style={{ textDecoration: 'none' }}>
+        <div className={css.item}>
+          <Settings className={css.icon} />
+          <Typography className={css.text}>Settings</Typography>
+        </div>
+      </NavLink>
       {isAuth 
         ? (<div className={css.item}>
             <Logout className={css.icon} />
