@@ -4,28 +4,30 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { useState } from 'react';
 import { settingsList } from '../../utils/helpers/settingsList';
+import { setSettingID } from '../../store/settings/settingsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Sidebar = () => {
-  const [selectedSetting, setSelectedSetting] = useState(settingsList[0]);
+  const { currentItemID } = useSelector((state) => state.settings);
+  const dispatch = useDispatch();
 
-  const handleSettingSelection = (item) => () => {
-    setSelectedSetting(item);
+  const handleSettingSelection = (itemId) => () => {
+    dispatch(setSettingID(itemId));
   };
 
   return (
     <>
-      {settingsList.map((setting, index) => (
+      {settingsList.map(({ id, name, icon, type }, index) => (
         <div key={index}>
-          {setting.type === 'divider' && <Divider />}
-          {setting.type !== 'divider' && (
+          {type === 'divider' && <Divider />}
+          {type !== 'divider' && (
             <ListItemButton
-              selected={selectedSetting.id === setting.id}
-              onClick={handleSettingSelection(setting)}
+              selected={currentItemID === id}
+              onClick={handleSettingSelection(id)}
             >
-              <ListItemIcon>{setting.icon}</ListItemIcon>
-              <ListItemText primary={setting.name} />
+              <ListItemIcon>{icon}</ListItemIcon>
+              <ListItemText primary={name} />
             </ListItemButton>
           )}
         </div>

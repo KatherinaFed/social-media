@@ -4,6 +4,7 @@ import usersReducer from './users/usersSlice';
 import profileReducer from './profile/profileSlice';
 import initReducer from './app/appSlice';
 import messageReducer from './messages/messageSlice';
+import settingsReducer from './settings/settingsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     users: usersReducer,
     profile: profileReducer,
     messages: messageReducer,
+    settings: settingsReducer,
   },
 });

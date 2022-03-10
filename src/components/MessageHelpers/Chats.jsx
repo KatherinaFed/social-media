@@ -34,7 +34,7 @@ const Chats = () => {
             <ListItemIcon>
               <Avatar alt={userName} src={userAvatar} />
             </ListItemIcon>
-            <ListItemText primary={userName}>{userName}</ListItemText>
+            <ListItemText primary={userName} />
             {isOnline && <ListItemText secondary="online" align="right" />}
           </ListItemButton>
         </div>
