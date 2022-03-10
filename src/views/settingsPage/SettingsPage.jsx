@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@mui/material';
 import { createTheme } from '@mui/material';
+import Main from '../../components/Settings/Main';
 import Sidebar from '../../components/Settings/Sidebar';
 
 const theme = createTheme();
@@ -17,7 +18,10 @@ export const SettingsPage = () => {
       <Container>
         <Paper elevation={5} style={{ marginTop: '20px' }}>
           <Box p={3}>
-            <Typography variant="h4" textAlign="center">
+            <Typography
+              variant="h4"
+              style={{ textAlign: 'left', marginLeft: '10px' }}
+            >
               Settings
             </Typography>
             <Divider />
@@ -32,12 +36,8 @@ export const SettingsPage = () => {
               >
                 <Sidebar />
               </Grid>
-              <Grid
-                item
-                xs={8}
-                style={{ height: '50vh', padding: '10px' }}
-              >
-                MAIN
+              <Grid item xs={8} style={{ height: '50vh', overflow: 'auto', padding: '10px' }}>
+                <Main />
               </Grid>
             </Grid>
           </Box>
