@@ -10,7 +10,7 @@ import General from '../../components/Settings/helpers/General/General';
 import Location from '../../components/Settings/helpers/Location';
 import ThemeMode from '../../components/Settings/helpers/ThemeMode';
 import Cookies from '../../components/Settings/helpers/Cookies';
-import Notification from '../../components/Settings/helpers/Notification';
+import Notification from '../../components/Settings/helpers/Notification/Notification';
 import Privacy from '../../components/Settings/helpers/Privacy';
 
 export const settingsList = [
