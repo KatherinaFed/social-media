@@ -21,8 +21,8 @@ const GeneralItem = ({ profile }) => {
     console.log(e.target.value)
   };
 
-  return generalList.map(({ name, type }) => (
-    <ListItemButton onChange={handleChange}>
+  return generalList.map(({ name, type }, index) => (
+    <ListItemButton key={index} onChange={handleChange}>
       <h4 style={{ width: '200px', textAlign: 'left' }}>{name}</h4>
       <ListItemText primary={type} />
     </ListItemButton>

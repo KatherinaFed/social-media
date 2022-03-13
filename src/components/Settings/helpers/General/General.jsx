@@ -1,10 +1,4 @@
-import {
-  Container,
-  Divider,
-  ListItemButton,
-  ListItemText,
-  Typography,
-} from '@mui/material';
+import { Container, Divider, Typography } from '@mui/material';
 import { Preloader } from '../../../Preloader/Preloader';
 import { useSelector } from 'react-redux';
 import GeneralItem from './GeneralItem';
