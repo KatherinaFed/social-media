@@ -10,7 +10,7 @@ import {
   Profile,
   ProfileContainer,
   Message,
-  SettingsPage,
+  SettingsContainer,
   UsersContainer,
 } from './views/index';
 import { initializeApp } from './store/app/appThunk';
@@ -52,7 +52,7 @@ export const App = () => {
             </Route>
             <Route path="/messages" element={<Message />} />
             <Route path="/users" element={<UsersContainer />} />
-            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/settings" element={<SettingsContainer />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </Grid>

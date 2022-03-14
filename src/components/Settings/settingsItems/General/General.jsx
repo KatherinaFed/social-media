@@ -1,10 +1,14 @@
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Container, Divider, Typography } from '@mui/material';
 import { Preloader } from '../../../Preloader/Preloader';
-import { useSelector } from 'react-redux';
-import GeneralItem from './GeneralItem';
+import GeneralData from './GeneralData';
 
 const General = () => {
   const { profile } = useSelector((state) => state.profile);
+
+  const id = useParams().id;
 
   if (!profile) {
     return <Preloader />;
@@ -19,7 +23,7 @@ const General = () => {
         General Account Settings
       </Typography>
       <Divider />
-      <GeneralItem profile={profile} />
+      <GeneralData profile={profile} />
       <Divider />
     </Container>
   );

@@ -6,12 +6,12 @@ import {
   Notifications,
   Settings,
 } from '@mui/icons-material';
-import General from '../../components/Settings/helpers/General/General';
-import Location from '../../components/Settings/helpers/Location';
-import ThemeMode from '../../components/Settings/helpers/ThemeMode';
-import Cookies from '../../components/Settings/helpers/Cookies';
-import Notification from '../../components/Settings/helpers/Notification/Notification';
-import Privacy from '../../components/Settings/helpers/Privacy';
+import General from '../../components/Settings/settingsItems/General/General';
+import Location from '../../components/Settings/settingsItems/Location';
+import ThemeMode from '../../components/Settings/settingsItems/ThemeMode';
+import Cookies from '../../components/Settings/settingsItems/Cookies';
+import Notification from '../../components/Settings/settingsItems/Notification/Notification';
+import Privacy from '../../components/Settings/settingsItems/Privacy';
 
 export const settingsList = [
   { id: 1, name: 'General', icon: <Settings />, link: <General /> },
