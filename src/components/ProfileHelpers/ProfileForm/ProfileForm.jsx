@@ -44,6 +44,7 @@ const ProfileForm = ({ setEditMode }) => {
       setEditMode(false);
     },
   });
+  console.log(values.fullName)
 
   return (
     <Box

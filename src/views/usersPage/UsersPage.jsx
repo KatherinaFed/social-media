@@ -25,6 +25,7 @@ const UsersPage = () => {
   return (
     <>
       <Paginator
+        page={currentPage}
         pageSize={pageSize}
         totalUsersCount={totalUsersCount}
         onPageChanged={onPageChanged}
@@ -35,6 +36,7 @@ const UsersPage = () => {
         </Container>
       ))}
       <Paginator
+        page={currentPage}
         pageSize={pageSize}
         totalUsersCount={totalUsersCount}
         onPageChanged={onPageChanged}

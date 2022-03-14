@@ -9,10 +9,11 @@ import {
 import { createTheme } from '@mui/material';
 import Main from '../../components/Settings/Main';
 import Sidebar from '../../components/Settings/Sidebar';
+import { withAuthNavigate } from '../../utils/helpers/withAuthNavigate';
 
 const theme = createTheme();
 
-export const SettingsPage = () => {
+const SettingsPage = () => {
   return (
     <div>
       <Container>
@@ -36,7 +37,11 @@ export const SettingsPage = () => {
               >
                 <Sidebar />
               </Grid>
-              <Grid item xs={8} style={{ height: '50vh', overflow: 'auto', padding: '10px' }}>
+              <Grid
+                item
+                xs={8}
+                style={{ height: '50vh', overflow: 'auto', padding: '10px' }}
+              >
                 <Main />
               </Grid>
             </Grid>
@@ -46,3 +51,5 @@ export const SettingsPage = () => {
     </div>
   );
 };
+
+export const SettingsContainer = withAuthNavigate(SettingsPage);
