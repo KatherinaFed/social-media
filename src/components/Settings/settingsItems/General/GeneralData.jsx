@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import {
-  FormControl,
-  InputLabel,
-  ListItemButton,
-  ListItemText,
-  OutlinedInput,
-} from '@mui/material';
-import { useSelector } from 'react-redux';
-import { NameForm, AboutMeForm, DescriptionForm } from './GeneralForms';
+import { Collapse, ListItemButton, ListItemText } from '@mui/material';
+import { AboutMeForm } from './GeneralForms/AboutMeForm';
+import { DescriptionForm } from './GeneralForms/JobDescriptionsForm';
+import { LookingForAJobForm } from './GeneralForms/JobForm';
+import { NameForm } from './GeneralForms/NameForm';
+import { ContactsForm } from './GeneralForms/ContactsForm';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import Contacts from '../../../ProfileHelpers/ProfileData/Contacts';
 
 const GeneralData = ({ profile }) => {
   const {
@@ -22,6 +21,9 @@ const GeneralData = ({ profile }) => {
   const [editAboutMe, setEditAboutMe] = useState(false);
   const [editLookingJob, setEditLookingJob] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
+  const [editContact, setEditContact] = useState(false);
+
+  const isLooking = lookingForAJob ? 'Yes' : 'No';
 
   return (
     <>
@@ -49,14 +51,20 @@ const GeneralData = ({ profile }) => {
           <ListItemText primary={aboutMe} />
         </ListItemButton>
       )}
-      <ListItemButton
-        id={2}
-        onClick={() => setEditLookingJob(true)}
-        style={{ height: '40px' }}
-      >
-        <h4 style={{ width: '200px', textAlign: 'left' }}>Looking for a job</h4>
-        <ListItemText primary={lookingForAJob} />
-      </ListItemButton>
+      {editLookingJob ? (
+        <LookingForAJobForm profile={profile} setEditMode={setEditLookingJob} />
+      ) : (
+        <ListItemButton
+          id={2}
+          onClick={() => setEditLookingJob(true)}
+          style={{ height: '40px' }}
+        >
+          <h4 style={{ width: '200px', textAlign: 'left' }}>
+            Looking for a job
+          </h4>
+          <ListItemText primary={isLooking} />
+        </ListItemButton>
+      )}
       {editDescription ? (
         <DescriptionForm profile={profile} setEditMode={setEditDescription} />
       ) : (
@@ -67,6 +75,29 @@ const GeneralData = ({ profile }) => {
         >
           <h4 style={{ width: '200px', textAlign: 'left' }}>Job description</h4>
           <ListItemText primary={lookingForAJobDescription} />
+        </ListItemButton>
+      )}
+      {editContact ? (
+        <>
+          <div style={{ padding: '8px 16px' }}>
+            <h4 style={{ width: '200px', textAlign: 'left' }}>Contacts</h4>
+          </div>
+          <ContactsForm profile={profile} setEditMode={setEditContact} />
+        </>
+      ) : (
+        <ListItemButton
+          id={4}
+          onClick={() => setEditContact(true)}
+          style={{ height: '40px' }}
+        >
+          <h4 style={{ width: '200px', textAlign: 'left' }}>Contacts</h4>
+          {Object.keys(contacts).map((key, index) => (
+            <Contacts
+              key={index}
+              contactTitle={key}
+              contactValue={contacts[key]}
+            />
+          ))}
         </ListItemButton>
       )}
     </>

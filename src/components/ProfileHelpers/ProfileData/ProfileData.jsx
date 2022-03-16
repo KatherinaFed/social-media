@@ -10,7 +10,7 @@ const ProfileData = ({ setEditMode, isOwner }) => {
 
   return (
     <>
-      {isOwner && (
+      {/* {isOwner && (
         <Button
           style={{ marginTop: '10px' }}
           size="small"
@@ -19,7 +19,7 @@ const ProfileData = ({ setEditMode, isOwner }) => {
         >
           Edit profile
         </Button>
-      )}
+      )} */}
       <div className={css.profileItem}>
         <h3 className={css.textItem}>About me:</h3>
         <span className={css.textDescription}>{profile.aboutMe}</span>
