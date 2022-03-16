@@ -8,8 +8,6 @@ import GeneralData from './GeneralData';
 const General = () => {
   const { profile } = useSelector((state) => state.profile);
 
-  const id = useParams().id;
-
   if (!profile) {
     return <Preloader />;
   }
