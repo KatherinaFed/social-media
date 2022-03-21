@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Box,
   Button,
@@ -13,7 +12,6 @@ import { saveProfileThunk } from '../../../../../store/profile/profileThunk';
 import initialValuesFun from '../../../../../utils/helpers/initialValuesFunction';
 
 export const ContactsForm = ({ profile, setEditMode }) => {
-  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const initialValues = initialValuesFun(profile);
@@ -43,8 +41,23 @@ export const ContactsForm = ({ profile, setEditMode }) => {
     >
       {Object.keys(profile.contacts).map((key, index) => {
         const Email = key === 'mainLink' && 'Email';
+
         return (
-            <div key={index}>
+          <div key={index}>
+            {/* {key === 'mainLink' ? (
+              <FormControl margin="dense" fullWidth>
+                <InputLabel htmlFor={key}>Email</InputLabel>
+                <OutlinedInput
+                  id={`contacts.${key}`}
+                  name={`contacts.${key}`}
+                  type="text"
+                  value={values.contacts[key]}
+                  onChange={handleChange}
+                  label={key}
+                  size="small"
+                />
+              </FormControl>
+            ) : (
               <FormControl margin="dense" fullWidth>
                 <InputLabel htmlFor={key}>{key}</InputLabel>
                 <OutlinedInput
@@ -57,10 +70,27 @@ export const ContactsForm = ({ profile, setEditMode }) => {
                   size="small"
                 />
               </FormControl>
-            </div>
+            )} */}
+            <FormControl margin="dense" fullWidth>
+                <InputLabel htmlFor={key}>{key}</InputLabel>
+                <OutlinedInput
+                  id={`contacts.${key}`}
+                  name={`contacts.${key}`}
+                  type="text"
+                  value={values.contacts[key]}
+                  onChange={handleChange}
+                  label={key}
+                  size="small"
+                />
+              </FormControl>
+          </div>
         );
       })}
-      <Button type="submit" variant="contained" style={{ marginBottom: '10px', marginTop: '5px' }}>
+      <Button
+        type="submit"
+        variant="contained"
+        style={{ marginBottom: '10px', marginTop: '5px' }}
+      >
         Save
       </Button>
     </Box>

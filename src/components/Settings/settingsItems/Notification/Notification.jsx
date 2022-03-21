@@ -1,6 +1,7 @@
 import { Container, Divider, Typography } from '@mui/material';
-import { useState } from 'react';
-import { Comments, Reminders, Tags } from './NotificationItems';
+import { Comments } from './NotificationItems/Comments';
+import { Reminders } from './NotificationItems/Reminders';
+import { Tags } from './NotificationItems/Tags';
 
 const Notification = () => {
   return (

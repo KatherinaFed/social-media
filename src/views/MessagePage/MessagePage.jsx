@@ -16,6 +16,8 @@ import { withAuthNavigate } from '../../utils/helpers/withAuthNavigate';
 import Chats from '../../components/MessageHelpers/Chats';
 import Messages from '../../components/MessageHelpers/Messages';
 import MessageForm from '../../components/MessageHelpers/MessageForm';
+import ChatSearch from '../../components/MessageHelpers/ChatSearch';
+import MessageHeader from '../../components/MessageHelpers/MessageHeader';
 
 const useStyles = makeStyles({
   table: {
@@ -62,15 +64,33 @@ const MessagePage = () => {
       <Container>
         <Paper elevation={5} style={{ marginTop: '20px' }}>
           <Box p={3}>
-            <Typography variant="h4" textAlign="center">
-              Happy Chatting!
-            </Typography>
-            <Divider />
             <Grid container spacing={2} style={{ marginTop: 'auto' }}>
               <Grid
                 item
                 xs={8}
-                style={{ height: '50vh', overflow: 'auto', padding: '10px' }}
+                style={{
+                  textAlign: 'center',
+                  padding: '0 0 0 20px',
+                }}
+              >
+                <MessageHeader />
+              </Grid>
+              <Grid
+                item
+                xs={4}
+                style={{
+                  textAlign: 'center',
+                  padding: '10px',
+                  backgroundColor: '#f5f5f5',
+                  border: '1px solid #ece7e7',
+                }}
+              >
+                <ChatSearch />
+              </Grid>
+              <Grid
+                item
+                xs={8}
+                style={{ height: '50vh', overflow: 'auto', padding: '20px' }}
               >
                 <List>
                   <Messages />
@@ -81,8 +101,9 @@ const MessagePage = () => {
                 item
                 xs={4}
                 style={{
-                  backgroundColor: theme.palette.primary.light,
-                  padding: '10px',
+                  backgroundColor: '#f5f5f5',
+                  padding: '0',
+                  border: '1px solid #ece7e7',
                 }}
               >
                 <Chats />

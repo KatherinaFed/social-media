@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useStyles } from './navbarStyle';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -8,15 +9,21 @@ import {
   Logout,
   Login,
 } from '@mui/icons-material';
-import { Typography, Container, Button } from '@mui/material';
+import { Typography, Container, ListItemButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { logout } from '../../store/auth/authThunk';
+import ListItemButtonCustom from './ListItemButtonCustom';
 
 export const Navbar = () => {
   const css = useStyles();
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const { isAuth } = useSelector((state) => state.auth);
+  const handleListItemClick = (index) => {
+    setSelectedIndex(index);
+  };
 
   const logoutClick = () => {
     dispatch(logout());
@@ -25,50 +32,80 @@ export const Navbar = () => {
   return (
     <Container className={css.container}>
       <NavLink to="/profile" style={{ textDecoration: 'none' }}>
-        <div className={css.item}>
-          <Home className={css.icon} />
-          <Typography className={css.text}>Homepage</Typography>
-        </div>
+        <ListItemButtonCustom
+          index={0}
+          selectedIndex={selectedIndex}
+          handleClick={handleListItemClick}
+          component={<Home className={css.icon} />}
+          name={'Homepage'}
+        />
       </NavLink>
       <NavLink to="/messages" style={{ textDecoration: 'none' }}>
-        <div className={css.item}>
-          <Chat className={css.icon} />
-          <Typography className={css.text}>Messages</Typography>
-        </div>
+        <ListItemButtonCustom
+          index={1}
+          selectedIndex={selectedIndex}
+          handleClick={handleListItemClick}
+          component={<Chat className={css.icon} />}
+          name={'Messages'}
+        />
       </NavLink>
       <NavLink to="/users" style={{ textDecoration: 'none' }}>
-        <div className={css.item}>
-          <People className={css.icon} />
-          <Typography className={css.text}>Users</Typography>
-        </div>
+        <ListItemButtonCustom
+          index={2}
+          selectedIndex={selectedIndex}
+          handleClick={handleListItemClick}
+          component={<People className={css.icon} />}
+          name={'Users'}
+        />
       </NavLink>
       <NavLink to="/settings" style={{ textDecoration: 'none' }}>
-        <div className={css.item}>
-          <Settings className={css.icon} />
-          <Typography className={css.text}>Settings</Typography>
-        </div>
+      <ListItemButtonCustom
+          index={3}
+          selectedIndex={selectedIndex}
+          handleClick={handleListItemClick}
+          component={<Settings className={css.icon} />}
+          name={'Settings'}
+        />
       </NavLink>
-      {isAuth 
-        ? (<div className={css.item}>
-            <Logout className={css.icon} />
-            <Button onClick={logoutClick} color="inherit" className={css.icon}>
-              Logout
-            </Button>
-          </div>)
-        : (<NavLink
-            to="/login"
+      {isAuth ? (
+        <ListItemButton
+          onClick={logoutClick}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            color: '#000',
+            padding: '8px 16px',
+            borderRadius: '4px',
+            marginBottom: '10px',
+          }}
+        >
+          <Logout className={css.icon} />
+          <Typography className={css.text}>Logout</Typography>
+        </ListItemButton>
+      ) : (
+        <NavLink
+          to="/login"
+          style={{
+            textDecoration: 'none',
+            color: 'black',
+            alignItems: 'center',
+          }}
+        >
+          <ListItemButton
             style={{
-              textDecoration: 'none',
-              color: 'black',
+              display: 'flex',
               alignItems: 'center',
-            }}>
-              <div className={css.item}>
-                <Login className={css.icon} />
-                <Button color="inherit" className={css.icon}>
-                 Login
-                </Button>
-              </div>
-            </NavLink>)}
+              color: '#000',
+              padding: '8px 16px',
+              borderRadius: '4px',
+              marginBottom: '10px',
+            }}
+          >
+            <Login className={css.icon} />
+            <Typography className={css.text}>Login</Typography>
+          </ListItemButton>
+        </NavLink>
+      )}
     </Container>
   );
 };

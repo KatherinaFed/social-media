@@ -1,5 +1,8 @@
 import { makeStyles } from '@mui/styles';
-import { theme } from '../../utils/helpers/palette';
+// import { theme } from '../../utils/helpers/palette';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme();
 
 export const useStyles = makeStyles(() => ({
   toolbar: {

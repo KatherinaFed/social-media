@@ -8,7 +8,7 @@ export const useStyles = makeStyles(() => ({
     height: '100vh',
     backgroundColor: '#6074d8',
     color: 'white',
-    paddingTop: theme.spacing(3),
+    padding: '10px',
     position: 'sticky',
     top: '0',
     textDecoration: 'none',
