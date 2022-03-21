@@ -22,7 +22,7 @@ export const LookingForAJobForm = ({ profile, setEditMode }) => {
     setChecked(e.target.checked);
   };
 
-  const { handleSubmit, values } = useFormik({
+  const { handleSubmit } = useFormik({
     initialValues,
     validationSchema: profileFormSchema,
     onSubmit: (value, setStatus) => {

@@ -13,7 +13,7 @@ export const profileFormSchema = Yup.object({
     facebook: Yup.string().url(),
     github: Yup.string().url(),
     instagram: Yup.string().url(),
-    mainLink: Yup.string().url(),
+    mainLink: Yup.string().email(),
     twitter: Yup.string().url(),
     vk: Yup.string().url(),
     website: Yup.string().url(),

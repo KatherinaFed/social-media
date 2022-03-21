@@ -58,7 +58,6 @@ export const Status = (props) => {
       ) : (
         <span
           style={{ fontWeight: '300', marginTop: '10px' }}
-          // className={css.status}
           data-testid="spanStatus"
           onClick={activateEditMode}
         >

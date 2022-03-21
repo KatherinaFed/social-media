@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Collapse, ListItemButton, ListItemText } from '@mui/material';
+import { ListItemButton, ListItemText } from '@mui/material';
 import { AboutMeForm } from './GeneralForms/AboutMeForm';
 import { DescriptionForm } from './GeneralForms/JobDescriptionsForm';
 import { LookingForAJobForm } from './GeneralForms/JobForm';
 import { NameForm } from './GeneralForms/NameForm';
 import { ContactsForm } from './GeneralForms/ContactsForm';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import Contacts from '../../../ProfileHelpers/ProfileData/Contacts';
 
 const GeneralData = ({ profile }) => {

@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { Button } from '@mui/material';
 import { useStyles } from './profileDataStyle';
 import Contacts from './Contacts';
 import LookingForAJob from './LookingForAJob';
@@ -10,16 +9,6 @@ const ProfileData = ({ setEditMode, isOwner }) => {
 
   return (
     <>
-      {/* {isOwner && (
-        <Button
-          style={{ marginTop: '10px' }}
-          size="small"
-          onClick={() => setEditMode(true)}
-          variant="outlined"
-        >
-          Edit profile
-        </Button>
-      )} */}
       <div className={css.profileItem}>
         <h3 className={css.textItem}>About me:</h3>
         <span className={css.textDescription}>{profile.aboutMe}</span>
