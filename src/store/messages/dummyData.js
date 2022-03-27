@@ -111,7 +111,7 @@ export const initialStateChat = {
       id: 10,
       chatId: 4,
       userName: 'Lizzy K.',
-      message: 'Kate, I can`t come today beacuse of feel really sick, sorry(',
+      message: 'Kate, I can`t come today because of feel really sick, sorry(',
       date: '15.JAN.2022, 10:37',
     },
     {

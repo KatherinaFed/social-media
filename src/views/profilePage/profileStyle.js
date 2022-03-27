@@ -25,6 +25,7 @@ export const useStyles = makeStyles(() => ({
     right: '0',
     margin: 'auto',
     top: '150px',
+    width: 'fit-content',
   },
   userImg: {
     width: '200px',

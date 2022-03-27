@@ -41,36 +41,10 @@ export const ContactsForm = ({ profile, setEditMode }) => {
     >
       {Object.keys(profile.contacts).map((key, index) => {
         const Email = key === 'mainLink' && 'Email';
+        console.log(values.contacts[key])
 
         return (
           <div key={index}>
-            {/* {key === 'mainLink' ? (
-              <FormControl margin="dense" fullWidth>
-                <InputLabel htmlFor={key}>Email</InputLabel>
-                <OutlinedInput
-                  id={`contacts.${key}`}
-                  name={`contacts.${key}`}
-                  type="text"
-                  value={values.contacts[key]}
-                  onChange={handleChange}
-                  label={key}
-                  size="small"
-                />
-              </FormControl>
-            ) : (
-              <FormControl margin="dense" fullWidth>
-                <InputLabel htmlFor={key}>{key}</InputLabel>
-                <OutlinedInput
-                  id={`contacts.${key}`}
-                  name={`contacts.${key}`}
-                  type="text"
-                  value={values.contacts[key]}
-                  onChange={handleChange}
-                  label={key}
-                  size="small"
-                />
-              </FormControl>
-            )} */}
             <FormControl margin="dense" fullWidth>
                 <InputLabel htmlFor={key}>{key}</InputLabel>
                 <OutlinedInput

@@ -81,7 +81,7 @@ const MessagePage = () => {
                 style={{
                   textAlign: 'center',
                   padding: '10px',
-                  backgroundColor: '#f5f5f5',
+                  backgroundColor: '#fff',
                   border: '1px solid #ece7e7',
                 }}
               >
@@ -90,9 +90,9 @@ const MessagePage = () => {
               <Grid
                 item
                 xs={8}
-                style={{ height: '50vh', overflow: 'auto', padding: '20px' }}
+                style={{ height: '50vh', overflow: 'auto', padding: '10px 20px' }}
               >
-                <List>
+                <List style={{ padding: '0px'}}>
                   <Messages />
                   <ListItem ref={scrollBottomRef} />
                 </List>
@@ -101,7 +101,7 @@ const MessagePage = () => {
                 item
                 xs={4}
                 style={{
-                  backgroundColor: '#f5f5f5',
+                  backgroundColor: '#fff',
                   padding: '0',
                   border: '1px solid #ece7e7',
                 }}

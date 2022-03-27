@@ -23,7 +23,7 @@ export const saveProfileThunk = (profileData, setStatus) => async (
 ) => {
   const userId = getState().auth.userId;
   const response = await profileAPI.saveProfile(profileData);
-
+// debugger
   if (response.data.resultCode === 0) {
     dispatch(getProfileThunk(userId));
   } else {

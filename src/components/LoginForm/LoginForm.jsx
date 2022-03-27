@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Box,
   Button,
@@ -21,6 +22,12 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const css = useStyles();
   const { captcha } = useSelector((state) => state.auth);
+  const [checked, setChecked] = useState(false);
+
+  const handleChecked = (e) => {
+    setChecked(e.target.checked);
+  };
+  console.log(checked)
 
   const { handleChange, handleSubmit, values, status } = useFormik({
     initialValues: {
@@ -90,8 +97,8 @@ export const LoginForm = () => {
                 <Checkbox
                   id="rememberMe"
                   size="small"
-                  // checked={checked}
-                  onChange={handleChange}
+                  checked={checked}
+                  onChange={handleChecked}
                 />
               }
               label="Remember me"

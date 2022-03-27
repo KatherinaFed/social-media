@@ -7,8 +7,6 @@ import {
   ListItemText,
 } from '@mui/material';
 import { setActiveChat } from '../../store/messages/messageSlice';
-// import { theme } from '../../utils/helpers/palette';
-
 import { createTheme } from '@mui/material';
 
 const theme = createTheme();
@@ -30,8 +28,7 @@ const Chats = () => {
         <div key={index}>
           <ListItemButton
             style={{
-              backgroundColor: buttonStyle && theme.palette.primary.main,
-              color: buttonStyle && theme.palette.primary.contrastText,
+              backgroundColor: buttonStyle && '#eeeeee',
             }}
             selected={buttonStyle}
             onClick={setActive(id)}

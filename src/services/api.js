@@ -1,11 +1,11 @@
 import * as axios from 'axios';
-import { API_KEY, BASE_URL } from '../utils/constants/apiData';
+import { API_KEY, BASE_URL } from '../utils/constants/apiKey';
 
 const instance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
   headers: {
-    "API-KEY": API_KEY,
+    'API-KEY': API_KEY,
   },
 });
 
@@ -63,5 +63,15 @@ export const profileAPI = {
   },
   saveProfile(profileData) {
     return instance.put('profile', profileData);
+  },
+};
+
+// SUBSCRIBE
+export const subscribeAPI = {
+  followUsers(userId) {
+    return instance.post(`follow/${userId}`, {}).then(({ data }) => data);
+  },
+  unfollowUsers(userId) {
+    return instance.delete(`follow/${userId}`).then(({ data }) => data);
   },
 };
