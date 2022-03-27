@@ -1,5 +1,7 @@
 import { Typography, ListItemButton } from '@mui/material';
-import { useStyles } from './navbarStyle';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme();
 
 const ListItemButtonCustom = ({
   index,
@@ -8,23 +10,30 @@ const ListItemButtonCustom = ({
   component,
   name,
 }) => {
-  const css = useStyles();
+
+  let color = null;
+
+  if (name === 'Login' || name === 'Logout') {
+    color = '#fff';
+  } else {
+    color = '#000';
+  }
+
+  const buttonSelected = selectedIndex === index && true;
 
   return (
     <ListItemButton
-      selected={selectedIndex === index}
+      selected={buttonSelected}
       onClick={() => handleClick(index)}
       style={{
         display: 'flex',
         alignItems: 'center',
-        color: '#000',
-        padding: '8px 16px',
-        borderRadius: '4px',
-        marginBottom: '10px',
+        color: color,
+        height: '60px',
       }}
     >
       {component}
-      <Typography className={css.text}>{name}</Typography>
+      <Typography>{name}</Typography>
     </ListItemButton>
   );
 };

@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useStyles } from './headerStyle';
 
 export const Header = () => {
@@ -10,7 +11,9 @@ export const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar className={css.toolbar}>
-        <Typography variant="h6">Social App</Typography>
+        <Link to="/profile" style={{ textDecoration: 'none', color: 'white' }}>
+          <Typography variant="h6">Social App</Typography>
+        </Link>
         {isAuth && (
           <div className={css.icons}>
             <Typography className={css.text} variant="h6">

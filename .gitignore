@@ -22,5 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# api-data
-apiData.js
+# api key, base URL
+apiKey.js

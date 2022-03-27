@@ -16,6 +16,7 @@ export const useStyles = makeStyles(() => ({
       backgroundColor: 'white',
       color: '#555',
       border: '1px solid #ece7e7',
+      padding: '10px 0',
     },
   },
   item: {
@@ -24,7 +25,7 @@ export const useStyles = makeStyles(() => ({
     color: '#000',
     padding: '8px 16px',
     borderRadius: '4px',
-    // backgroundColor: '#8894d3',
+    backgroundColor: '#eeeeee',
     marginBottom: theme.spacing(4),
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(3),

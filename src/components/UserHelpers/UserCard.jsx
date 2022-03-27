@@ -1,19 +1,35 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Avatar, Paper, Typography } from '@mui/material';
+import { Avatar, Button, Paper, Typography } from '@mui/material';
+import { followThunk, unfollowThunk } from '../../store/users/usersThunk';
 
 const UserCard = ({ user }) => {
+  const { followingInProgress } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
+  const followClick = () => {
+    dispatch(followThunk(user.id));
+  };
+
+  const unfollowClick = () => {
+    dispatch(unfollowThunk(user.id));
+  };
+
   return (
     <Paper
       elevation={5}
       style={{
+        display: 'flex',
         width: '100%',
-        // height: '100px',
         borderRadius: '10px',
         margin: '10px',
         padding: '20px',
       }}
     >
-      <NavLink to={`/profile/${user.id}`} style={{ textDecoration: 'none' }}>
+      <NavLink
+        to={`/profile/${user.id}`}
+        style={{ textDecoration: 'none', width: 'inherit' }}
+      >
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Avatar
             alt=""
@@ -37,7 +53,7 @@ const UserCard = ({ user }) => {
               style={{
                 fontSize: '18px',
                 color: 'black',
-                marginLeft: '20px',
+                marginLeft: '50px',
                 fontWeight: '300',
               }}
             >
@@ -46,6 +62,27 @@ const UserCard = ({ user }) => {
           )}
         </div>
       </NavLink>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        {user.followed ? (
+          <Button
+            variant="outlined"
+            style={{ marginLeft: 'auto' }}
+            disabled={followingInProgress.some((id) => id === user.id)}
+            onClick={unfollowClick}
+          >
+            Unfollow
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            style={{ marginLeft: 'auto' }}
+            disabled={followingInProgress.some((id) => id === user.id)}
+            onClick={followClick}
+          >
+            Follow
+          </Button>
+        )}
+      </div>
     </Paper>
   );
 };
