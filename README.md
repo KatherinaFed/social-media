@@ -2,14 +2,13 @@
 
 ### This site was built using [GitHub Pages](https://katherinafed.github.io/social-media).
 
-### For entering use:
+**Login:**
 ```
-Email: **free@samuraijs.com**
-Password: **free**
+Email: free@samuraijs.com
+Password: free
 ```
 
 ### Key technologies used in project:
-- Redux Toolkit
-- Formik
 - JavaScript
+- Redux Toolkit
 - Material UI
