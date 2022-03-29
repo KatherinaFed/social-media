@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import { ListItemButton, ListItemText } from '@mui/material';
-import { AboutMeForm } from './GeneralForms/AboutMeForm';
-import { DescriptionForm } from './GeneralForms/JobDescriptionsForm';
-import { LookingForAJobForm } from './GeneralForms/JobForm';
-import { NameForm } from './GeneralForms/NameForm';
 import { ContactsForm } from './GeneralForms/ContactsForm';
-import Contacts from '../../../ProfileHelpers/ProfileData/Contacts';
+import ListItemButtonCustomEdit from './ListItemButtonCustomEdit';
+import GeneralItemForm from './GeneralForms/GeneralItemForm';
 
 const GeneralData = ({ profile }) => {
   const {
@@ -14,6 +10,7 @@ const GeneralData = ({ profile }) => {
     contacts,
     lookingForAJob,
     lookingForAJobDescription,
+    userId,
   } = profile;
 
   const [editName, setEditName] = useState(false);
@@ -24,80 +21,99 @@ const GeneralData = ({ profile }) => {
 
   const isLooking = lookingForAJob ? 'Yes' : 'No';
 
+  const handleClickEdit = (id, editModeName) => () => {
+    if (id === 21114) {
+      editModeName(true);
+    } else {
+      editModeName(false);
+    }
+  };
+
   return (
     <>
       {editName ? (
-        <NameForm profile={profile} setEditMode={setEditName} />
+        <GeneralItemForm
+          name={'fullName'}
+          text={'Name'}
+          label={'Name'}
+          profile={profile}
+          setEditMode={setEditName}
+        />
       ) : (
-        <ListItemButton
+        <ListItemButtonCustomEdit
           id={0}
-          onClick={() => setEditName(true)}
-          style={{ height: '40px' }}
-        >
-          <h4 style={{ width: '200px', textAlign: 'left' }}>Name</h4>
-          <ListItemText primary={fullName} />
-        </ListItemButton>
+          userId={userId}
+          setEditMode={setEditName}
+          handleClickEdit={handleClickEdit}
+          name={'Name'}
+          primaryName={fullName}
+        />
       )}
       {editAboutMe ? (
-        <AboutMeForm profile={profile} setEditMode={setEditAboutMe} />
+        <GeneralItemForm
+          name={'aboutMe'}
+          text={'About me'}
+          label={'aboutMe'}
+          profile={profile}
+          setEditMode={setEditAboutMe}
+        />
       ) : (
-        <ListItemButton
+        <ListItemButtonCustomEdit
           id={1}
-          onClick={() => setEditAboutMe(true)}
-          style={{ height: '40px' }}
-        >
-          <h4 style={{ width: '200px', textAlign: 'left' }}>About me</h4>
-          <ListItemText primary={aboutMe} />
-        </ListItemButton>
+          userId={userId}
+          setEditMode={setEditAboutMe}
+          handleClickEdit={handleClickEdit}
+          name={'About me'}
+          primaryName={aboutMe}
+        />
       )}
       {editLookingJob ? (
-        <LookingForAJobForm profile={profile} setEditMode={setEditLookingJob} />
+        <GeneralItemForm
+          name={'lookingForAJob'}
+          text={'Looking for a job'}
+          label={'Yes'}
+          profile={profile}
+          setEditMode={setEditLookingJob}
+        />
       ) : (
-        <ListItemButton
+        <ListItemButtonCustomEdit
           id={2}
-          onClick={() => setEditLookingJob(true)}
-          style={{ height: '40px' }}
-        >
-          <h4 style={{ width: '200px', textAlign: 'left' }}>
-            Looking for a job
-          </h4>
-          <ListItemText primary={isLooking} />
-        </ListItemButton>
+          userId={userId}
+          setEditMode={setEditLookingJob}
+          handleClickEdit={handleClickEdit}
+          name={'Looking for a job'}
+          primaryName={isLooking}
+        />
       )}
       {editDescription ? (
-        <DescriptionForm profile={profile} setEditMode={setEditDescription} />
+        <GeneralItemForm
+          name={'lookingForAJobDescription'}
+          text={'Job description'}
+          label={'jobDescription'}
+          profile={profile}
+          setEditMode={setEditDescription}
+        />
       ) : (
-        <ListItemButton
+        <ListItemButtonCustomEdit
           id={3}
-          onClick={() => setEditDescription(true)}
-          style={{ height: '40px' }}
-        >
-          <h4 style={{ width: '200px', textAlign: 'left' }}>Job description</h4>
-          <ListItemText primary={lookingForAJobDescription} />
-        </ListItemButton>
+          userId={userId}
+          setEditMode={setEditDescription}
+          handleClickEdit={handleClickEdit}
+          name={'Job description'}
+          primaryName={lookingForAJobDescription}
+        />
       )}
       {editContact ? (
-        <>
-          <div style={{ padding: '8px 16px' }}>
-            <h4 style={{ width: '200px', textAlign: 'left' }}>Contacts</h4>
-          </div>
-          <ContactsForm profile={profile} setEditMode={setEditContact} />
-        </>
+        <ContactsForm profile={profile} setEditMode={setEditContact} />
       ) : (
-        <ListItemButton
+        <ListItemButtonCustomEdit
           id={4}
-          onClick={() => setEditContact(true)}
-          style={{ height: '40px' }}
-        >
-          <h4 style={{ width: '200px', textAlign: 'left' }}>Contacts</h4>
-          {Object.keys(contacts).map((key, index) => (
-            <Contacts
-              key={index}
-              contactTitle={key}
-              contactValue={contacts[key]}
-            />
-          ))}
-        </ListItemButton>
+          userId={userId}
+          setEditMode={setEditContact}
+          handleClickEdit={handleClickEdit}
+          name={'Contacts'}
+          contacts={contacts}
+        />
       )}
     </>
   );

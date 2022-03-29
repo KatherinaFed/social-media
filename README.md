@@ -9,6 +9,7 @@ Password: free
 ```
 
 ### Key technologies used in project:
+- React
 - JavaScript
 - Redux Toolkit
 - Material UI

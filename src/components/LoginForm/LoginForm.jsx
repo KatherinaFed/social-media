@@ -1,15 +1,10 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   FormControl,
-  FormControlLabel,
-  FormGroup,
   Input,
-  InputLabel,
-  OutlinedInput,
   Typography,
 } from '@mui/material';
 import { useFormik } from 'formik';
@@ -17,6 +12,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useStyles } from './loginFromStyle';
 import { logInSchema } from '../../utils/helpers/validation';
 import { login } from '../../store/auth/authThunk';
+import FormControlCustom from './FormControlCustom';
+import FormGroupCustom from './FormGroupCustom';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -27,7 +24,6 @@ export const LoginForm = () => {
   const handleChecked = (e) => {
     setChecked(e.target.checked);
   };
-  console.log(checked)
 
   const { handleChange, handleSubmit, values, status } = useFormik({
     initialValues: {
@@ -69,55 +65,35 @@ export const LoginForm = () => {
           noValidate
           sx={{ p: 1, mt: 1 }}
         >
-          <FormControl margin="normal" required fullWidth size="small">
-            <InputLabel htmlFor="email">E-mail</InputLabel>
-            <OutlinedInput
-              id="email"
-              name="email"
-              type="text"
-              value={values.email}
-              onChange={handleChange}
-              label="email"
-            />
-          </FormControl>
-          <FormControl margin="normal" required fullWidth size="small">
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <OutlinedInput
-              id="password"
-              name="password"
-              type="password"
-              value={values.password}
-              onChange={handleChange}
-              label="password"
-            />
-          </FormControl>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  id="rememberMe"
-                  size="small"
-                  checked={checked}
-                  onChange={handleChecked}
-                />
-              }
-              label="Remember me"
-            />
-          </FormGroup>
+          <FormControlCustom
+            name={'email'}
+            text={'E-mail'}
+            value={values.email}
+            handleChange={handleChange}
+          />
+          <FormControlCustom
+            name={'password'}
+            text={'Password'}
+            value={values.password}
+            handleChange={handleChange}
+          />
+          <FormGroupCustom
+            id={'rememberMe'}
+            name={'Remember me'}
+            checked={checked}
+            handleChecked={handleChecked}
+          />
 
           <div>{captcha && <img src={captcha} alt="captcha" />}</div>
           <div>
             {captcha && (
-              <FormControl margin="normal" required fullWidth>
-                <Input
-                  id="captcha"
-                  name="captcha"
-                  placeholder="Put the symbols from image"
-                  type="text"
-                  value={values.captcha}
-                  onChange={handleChange}
-                />
-              </FormControl>
+              <FormControlCustom
+                name={'captcha'}
+                text={'Captcha'}
+                placeholder={'Put the symbols from image'}
+                value={values.captcha}
+                handleChange={handleChange}
+              />
             )}
           </div>
           <div className={css.error}>{status}</div>

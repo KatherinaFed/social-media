@@ -26,7 +26,7 @@ export const login = (
 ) => async (dispatch) => {
   
   const response = await authAPI.login(email, password, rememberMe, captcha);
-  
+
   if (response.resultCode === 0) {
     dispatch(getAuthUserData());
   } else if (response.resultCode === 10) {

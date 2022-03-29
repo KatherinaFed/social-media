@@ -1,29 +1,45 @@
 import {
   Box,
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
+  FormGroup,
   InputLabel,
   OutlinedInput,
 } from '@mui/material';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { profileFormSchema } from '../../../../../utils/helpers/validation';
 import { saveProfileThunk } from '../../../../../store/profile/profileThunk';
 import initialValuesFun from '../../../../../utils/helpers/initialValuesFunction';
 
-export const DescriptionForm = ({ profile, setEditMode }) => {
+const GeneralItemForm = ({ name, text, label, profile, setEditMode }) => {
+  const [checked, setChecked] = useState(profile.lookingForAJob);
   const dispatch = useDispatch();
 
   const initialValues = initialValuesFun(profile);
+
+  const handleChecked = (e) => {
+    setChecked(e.target.checked);
+  };
 
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues,
     validationSchema: profileFormSchema,
     onSubmit: (value, setStatus) => {
-      dispatch(saveProfileThunk(value, setStatus));
+      const newValues = {
+        ...value,
+        lookingForAJob: checked,
+      };
+
+      dispatch(saveProfileThunk(newValues, setStatus));
       setEditMode(false);
     },
   });
+
+  const isLookingForAJob = name === 'lookingForAJob';
 
   return (
     <Box
@@ -40,25 +56,35 @@ export const DescriptionForm = ({ profile, setEditMode }) => {
       noValidate
     >
       <h4 style={{ width: '300px', textAlign: 'left', marginLeft: '10px' }}>
-        Job description
+        {text}
       </h4>
-      <FormControl margin="normal" fullWidth>
-        <InputLabel htmlFor="lookingForAJobDescription">
-          Job description
-        </InputLabel>
-        <OutlinedInput
-          id="lookingForAJobDescription"
-          name="lookingForAJobDescription"
-          type="text"
-          value={values.lookingForAJobDescription}
-          onChange={handleChange}
-          label="lookingForAJobDescription"
-          size="small"
-        />
-      </FormControl>
+      {isLookingForAJob ? (
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={checked} onChange={handleChecked} />}
+            label={label}
+          />
+        </FormGroup>
+      ) : (
+        <FormControl margin="normal" required fullWidth>
+          <InputLabel htmlFor={label}>{text}</InputLabel>
+          <OutlinedInput
+            id={name}
+            name={name}
+            type="text"
+            value={values[name]}
+            onChange={handleChange}
+            label={label}
+            size="small"
+          />
+        </FormControl>
+      )}
+
       <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2, ml: 1 }}>
         Save
       </Button>
     </Box>
   );
 };
+
+export default GeneralItemForm;

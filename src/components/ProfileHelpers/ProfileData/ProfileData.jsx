@@ -3,7 +3,7 @@ import { useStyles } from './profileDataStyle';
 import Contacts from './Contacts';
 import LookingForAJob from './LookingForAJob';
 
-const ProfileData = ({ setEditMode, isOwner }) => {
+const ProfileData = () => {
   const css = useStyles();
   const { profile } = useSelector((state) => state.profile);
 
