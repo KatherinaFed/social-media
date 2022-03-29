@@ -39,24 +39,25 @@ export const ContactsForm = ({ profile, setEditMode }) => {
       onSubmit={handleSubmit}
       noValidate
     >
+      <div style={{ padding: '8px 16px' }}>
+        <h4 style={{ width: '200px', textAlign: 'left' }}>Contacts</h4>
+      </div>
       {Object.keys(profile.contacts).map((key, index) => {
-        const Email = key === 'mainLink' && 'Email';
-        console.log(values.contacts[key])
 
         return (
           <div key={index}>
             <FormControl margin="dense" fullWidth>
-                <InputLabel htmlFor={key}>{key}</InputLabel>
-                <OutlinedInput
-                  id={`contacts.${key}`}
-                  name={`contacts.${key}`}
-                  type="text"
-                  value={values.contacts[key]}
-                  onChange={handleChange}
-                  label={key}
-                  size="small"
-                />
-              </FormControl>
+              <InputLabel htmlFor={key}>{key}</InputLabel>
+              <OutlinedInput
+                id={`contacts.${key}`}
+                name={`contacts.${key}`}
+                type="text"
+                value={values.contacts[key]}
+                onChange={handleChange}
+                label={key}
+                size="small"
+              />
+            </FormControl>
           </div>
         );
       })}

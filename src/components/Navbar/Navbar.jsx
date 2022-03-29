@@ -26,7 +26,7 @@ export const Navbar = () => {
 
   const location = useLocation().pathname;
 
-  console.log('Index location: ', location === '/profile');
+  // console.log('Index location: ', location === '/profile');
 
   const handleListItemClick = (index) => {
     setSelectedIndex(index);

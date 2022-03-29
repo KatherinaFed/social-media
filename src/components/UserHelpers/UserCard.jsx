@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Avatar, Button, Paper, Typography } from '@mui/material';
 import { followThunk, unfollowThunk } from '../../store/users/usersThunk';
+import ButtonCustom from './ButtonCustom';
 
 const UserCard = ({ user }) => {
   const { followingInProgress } = useSelector((state) => state.users);
@@ -54,6 +55,7 @@ const UserCard = ({ user }) => {
                 fontSize: '18px',
                 color: 'black',
                 marginLeft: '50px',
+                marginRight: '10px',
                 fontWeight: '300',
               }}
             >
@@ -64,23 +66,21 @@ const UserCard = ({ user }) => {
       </NavLink>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         {user.followed ? (
-          <Button
-            variant="outlined"
-            style={{ marginLeft: 'auto' }}
-            disabled={followingInProgress.some((id) => id === user.id)}
-            onClick={unfollowClick}
-          >
-            Unfollow
-          </Button>
+          <ButtonCustom
+            user={user}
+            variant={'outlined'}
+            followingInProgress={followingInProgress}
+            handleClick={unfollowClick}
+            text={'Unfollow'}
+          />
         ) : (
-          <Button
-            variant="contained"
-            style={{ marginLeft: 'auto' }}
-            disabled={followingInProgress.some((id) => id === user.id)}
-            onClick={followClick}
-          >
-            Follow
-          </Button>
+          <ButtonCustom
+            user={user}
+            variant={'contained'}
+            followingInProgress={followingInProgress}
+            handleClick={followClick}
+            text={'Follow'}
+          />
         )}
       </div>
     </Paper>

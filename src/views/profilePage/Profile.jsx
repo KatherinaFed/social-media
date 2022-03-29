@@ -6,7 +6,6 @@ import { Preloader } from '../../components/Preloader/Preloader';
 import { Status } from '../../components/Status/Status';
 import coverImg from '../../assets/cover.jpeg';
 import userImg from '../../assets/users.png';
-import ProfileForm from '../../components/ProfileHelpers/ProfileForm/ProfileForm';
 import ProfileData from '../../components/ProfileHelpers/ProfileData/ProfileData';
 import Share from '../../components/ProfileHelpers/Share/Share';
 import { savePhotoThunk } from '../../store/profile/profileThunk';
@@ -14,7 +13,6 @@ import Posts from '../../components/ProfileHelpers/ProfilePosts/Posts';
 
 export const Profile = ({ isOwner }) => {
   const css = useStyles();
-  const [editMode, setEditMode] = useState(false);
   const { profile, status } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
@@ -68,11 +66,7 @@ export const Profile = ({ isOwner }) => {
         <Grid item sm={3}>
           <div className={css.profileDescription}>
             <h4 className={css.text}>User information:</h4>
-            {editMode ? (
-              <ProfileForm setEditMode={setEditMode} />
-            ) : (
-              <ProfileData setEditMode={setEditMode} isOwner={isOwner} />
-            )}
+            <ProfileData />
           </div>
         </Grid>
       </Grid>
