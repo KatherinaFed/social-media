@@ -3,6 +3,8 @@ import _ from 'lodash';
 import { timing } from '../../utils/helpers/time';
 import { initialStateChat } from './dummyData';
 
+console.log(timing())
+
 const messageSlice = createSlice({
   name: 'messages',
   initialState: initialStateChat,

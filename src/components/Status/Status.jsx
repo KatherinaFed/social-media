@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@mui/styles';
-import { Input } from '@mui/material';
+import { Input, Typography } from '@mui/material';
 import { updateStatusThunk } from '../../store/profile/profileThunk';
 
 export const useStyles = makeStyles(() => ({
@@ -53,16 +53,16 @@ export const Status = (props) => {
             value={status}
             maxLength="20"
           />
-          <span>{20 - status.length}/20</span>
+          <Typography>{20 - status.length}/20</Typography>
         </div>
       ) : (
-        <span
+        <Typography
           style={{ fontWeight: '300', marginTop: '10px' }}
           data-testid="spanStatus"
           onClick={activateEditMode}
         >
           {status || 'Status is empty'}
-        </span>
+        </Typography>
       )}
     </>
   );

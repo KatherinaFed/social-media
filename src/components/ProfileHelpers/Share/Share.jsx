@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PermMedia, Label, Room, EmojiEmotions } from '@mui/icons-material';
 import { useFormik } from 'formik';
 import { useStyles } from './shareStyle';
 import { addPost } from '../../../store/profile/profileSlice';
 import userImg from '../../../assets/users.png';
+import {
+  Avatar,
+  Box,
+  Button,
+  Divider,
+  InputBase,
+} from '@mui/material';
+import ShareItemCustom from './ShareItemCustom';
 
 const Share = ({ isOwner }) => {
   const css = useStyles();
@@ -12,7 +20,10 @@ const Share = ({ isOwner }) => {
   const { profile, avatar } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
-  const textInput = React.createRef();
+  const textInput = useRef(null);
+  useEffect(() => {
+    textInput.current.focus();
+  });
 
   const { handleChange, handleSubmit, values, isValid, dirty } = useFormik({
     initialValues: {
@@ -30,60 +41,72 @@ const Share = ({ isOwner }) => {
     : `Type something ${profile.fullName}...`;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={css.share}>
-        <div className="shareWrapper">
-          <div className={css.shareTop}>
-            <img
-              className={css.shareProfileImg}
-              src={avatar || userImg}
-              alt=""
-            />
-            <input
-              id="newPostText"
-              name="newPostText"
-              type="text"
-              onChange={handleChange}
-              ref={textInput}
-              value={values.newPostText}
-              placeholder={placeholderText}
-              className={css.shareInput}
-            />
-          </div>
-          <hr className={css.shareHr} />
-          <div className={css.shareBottom}>
-            <div className={css.shareOptions}>
-              <div className={css.shareOption}>
-                <PermMedia htmlColor="tomato" className={css.shareIcon} />
-                <span className={css.shareOptionText}>Photo or Video</span>
-              </div>
-              <div className={css.shareOption}>
-                <Label htmlColor="blue" className={css.shareIcon} />
-                <span className={css.shareOptionText}>Tag</span>
-              </div>
-              <div className={css.shareOption}>
-                <Room htmlColor="green" className={css.shareIcon} />
-                <span className={css.shareOptionText}>Location</span>
-              </div>
-              <div className={css.shareOption}>
-                <EmojiEmotions
-                  htmlColor="goldenrod"
-                  className={css.shareIcon}
-                />
-                <span className={css.shareOptionText}>Feelings</span>
-              </div>
-            </div>
-            <button
-              type="submit"
-              disabled={!isValid || !dirty}
-              className={css.shareButton}
-            >
-              Share
-            </button>
-          </div>
-        </div>
+    <Box
+      className={css.form}
+      component="form"
+      onSubmit={handleSubmit}
+      noValidate
+    >
+      <div className={css.shareTop}>
+        <Avatar
+          alt="avatar"
+          src={avatar || userImg}
+          sx={{
+            width: 40,
+            height: 40,
+            marginRight: '10px',
+          }}
+        />
+        <InputBase
+          id="newPostText"
+          name="newPostText"
+          type="text"
+          onChange={handleChange}
+          ref={textInput}
+          value={values.newPostText}
+          placeholder={placeholderText}
+          className={css.shareInput}
+          style={{ fontSize: 14 }}
+        />
       </div>
-    </form>
+      <Divider style={{ margin: 10 }} />
+      <div className={css.shareBottom}>
+        <div className={css.shareOptions}>
+          <ShareItemCustom
+            componentIcon={
+              <PermMedia htmlColor="tomato" style={{ marginRight: 5 }} />
+            }
+            text={'Photo or Video'}
+          />
+          <ShareItemCustom
+            componentIcon={
+              <Label htmlColor="blue" style={{ marginRight: 5 }} />
+            }
+            text={'Tag'}
+          />
+          <ShareItemCustom
+            componentIcon={
+              <Room htmlColor="green" style={{ marginRight: 5 }} />
+            }
+            text={'Location'}
+          />
+          <ShareItemCustom
+            componentIcon={
+              <EmojiEmotions htmlColor="goldenrod" style={{ marginRight: 5 }} />
+            }
+            text={'Feelings'}
+          />
+        </div>
+        <Button
+          type="submit"
+          variant="contained"
+          disabled={!isValid || !dirty}
+          style={{ fontWeight: 500, marginRight: 10, color: 'white' }}
+        >
+          Share
+        </Button>
+      </div>
+    </Box>
   );
 };
 

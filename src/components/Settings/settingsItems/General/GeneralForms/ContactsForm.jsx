@@ -11,6 +11,10 @@ import { profileFormSchema } from '../../../../../utils/helpers/validation';
 import { saveProfileThunk } from '../../../../../store/profile/profileThunk';
 import initialValuesFun from '../../../../../utils/helpers/initialValuesFunction';
 
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 export const ContactsForm = ({ profile, setEditMode }) => {
   const dispatch = useDispatch();
 
@@ -28,11 +32,8 @@ export const ContactsForm = ({ profile, setEditMode }) => {
   return (
     <Box
       style={{
-        // display: 'flex',
         flexDirection: 'column',
         alignItems: 'end',
-        // float: 'right',
-        // height: '50px',
         width: '50%',
       }}
       component="form"
@@ -43,21 +44,37 @@ export const ContactsForm = ({ profile, setEditMode }) => {
         <h4 style={{ width: '200px', textAlign: 'left' }}>Contacts</h4>
       </div>
       {Object.keys(profile.contacts).map((key, index) => {
+        const isMainLink = key === 'mainLink';
 
         return (
           <div key={index}>
-            <FormControl margin="dense" fullWidth>
-              <InputLabel htmlFor={key}>{key}</InputLabel>
-              <OutlinedInput
-                id={`contacts.${key}`}
-                name={`contacts.${key}`}
-                type="text"
-                value={values.contacts[key]}
-                onChange={handleChange}
-                label={key}
-                size="small"
-              />
-            </FormControl>
+            {isMainLink ? (
+              <FormControl margin="dense" fullWidth>
+                <InputLabel htmlFor="email">Email</InputLabel>
+                <OutlinedInput
+                  id={`contacts.${key}`}
+                  name={`contacts.${key}`}
+                  type="text"
+                  value={values.contacts[key]}
+                  onChange={handleChange}
+                  label="email"
+                  size="small"
+                />
+              </FormControl>
+            ) : (
+              <FormControl margin="dense" fullWidth>
+                <InputLabel htmlFor={key}>{capitalizeFirstLetter(key)}</InputLabel>
+                <OutlinedInput
+                  id={`contacts.${key}`}
+                  name={`contacts.${key}`}
+                  type="text"
+                  value={values.contacts[key]}
+                  onChange={handleChange}
+                  label={key}
+                  size="small"
+                />
+              </FormControl>
+            )}
           </div>
         );
       })}

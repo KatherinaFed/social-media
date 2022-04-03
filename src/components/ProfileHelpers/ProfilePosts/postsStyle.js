@@ -2,7 +2,6 @@ import { makeStyles } from '@mui/styles';
 
 export const useStylesPost = makeStyles(() => ({
   postWrapper: {
-    width: '90%',
     minHeight: '90px',
     borderRadius: '10px',
     margin: '20px 0',
@@ -48,7 +47,7 @@ export const useStylesPost = makeStyles(() => ({
     cursor: 'pointer',
   },
   likeCounter: {
-    fontSize: '15px',
+    fontSize: '16px',
   },
 }));
 
