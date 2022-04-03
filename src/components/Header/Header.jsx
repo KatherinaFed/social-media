@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar className={css.toolbar}>
-        <Link to="/profile" style={{ textDecoration: 'none', color: 'white' }}>
+        <Link to="/profile" className={css.link}>
           <Typography variant="h6">Social App</Typography>
         </Link>
         {isAuth && (

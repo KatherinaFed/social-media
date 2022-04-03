@@ -24,7 +24,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 const ChatSearch = () => {
-  const classes = useStyles();
+  const css = useStyles();
+
   return (
     <Box
       display="flex"
@@ -34,7 +35,7 @@ const ChatSearch = () => {
       bgcolor="inherit"
     >
       <InputBase
-        className={classes.input}
+        className={css.input}
         placeholder="Search"
         startAdornment={
           <InputAdornment position={'start'}>

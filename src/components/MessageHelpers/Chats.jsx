@@ -7,9 +7,6 @@ import {
   ListItemText,
 } from '@mui/material';
 import { setActiveChat } from '../../store/messages/messageSlice';
-import { createTheme } from '@mui/material';
-
-const theme = createTheme();
 
 const Chats = () => {
   const { chats, currentChatId } = useSelector((state) => state.messages);

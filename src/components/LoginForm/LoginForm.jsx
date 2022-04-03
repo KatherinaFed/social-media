@@ -48,14 +48,7 @@ export const LoginForm = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
+      <Box className={css.box}>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
@@ -63,16 +56,18 @@ export const LoginForm = () => {
           component="form"
           onSubmit={handleSubmit}
           noValidate
-          sx={{ p: 1, mt: 1 }}
+          className={css.form}
         >
           <FormControlCustom
             name={'email'}
+            type={'text'}
             text={'E-mail'}
             value={values.email}
             handleChange={handleChange}
           />
           <FormControlCustom
             name={'password'}
+            type={'password'}
             text={'Password'}
             value={values.password}
             handleChange={handleChange}
@@ -83,7 +78,6 @@ export const LoginForm = () => {
             checked={checked}
             handleChecked={handleChecked}
           />
-
           <div>{captcha && <img src={captcha} alt="captcha" />}</div>
           <div>
             {captcha && (
@@ -101,7 +95,7 @@ export const LoginForm = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            style={{ marginTop: 10 }}
           >
             Sign in
           </Button>

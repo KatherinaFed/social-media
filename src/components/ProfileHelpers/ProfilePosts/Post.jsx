@@ -5,10 +5,10 @@ import userImg from '../../../assets/users.png';
 import likeIcon from '../../../assets/like.png';
 import dislikeIcon from '../../../assets/dislike.png';
 import { deletePost } from '../../../store/profile/profileSlice';
-import { IconButton } from '@mui/material';
+import { Avatar, Container, IconButton, Typography } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 
-const Post = ({ id, username, message, likes, photo, photoOwner, isOwner }) => {
+const Post = ({ id, username, message, likes, photo, isOwner }) => {
   const css = useStylesPost();
   const dispatch = useDispatch();
 
@@ -27,35 +27,55 @@ const Post = ({ id, username, message, likes, photo, photoOwner, isOwner }) => {
   const likeImg = isLiked ? likeIcon : dislikeIcon;
 
   return (
-    <div className={css.postWrapper}>
+    <Container className={css.postWrapper}>
       {isOwner && (
-        <div className={css.deletePost}>
-          <IconButton
-            aria-label="delete"
-            size="small"
-            onClick={deleteHandler(id)}
-          >
-            <Delete />
-          </IconButton>
-        </div>
+        <IconButton
+          style={{ float: 'right' }}
+          aria-label="delete"
+          size="small"
+          onClick={deleteHandler(id)}
+        >
+          <Delete />
+        </IconButton>
       )}
-      <div className={css.infoWrapper}>
-        <img className={css.postImg} src={photo || userImg} alt="userImage" />
-        <span className={css.username}>{username}</span>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Avatar
+          alt="userImage"
+          src={photo || userImg}
+          sx={{ width: 40, height: 40, marginRight: '10px' }}
+        />
+        <Typography
+          variant="text"
+          style={{
+            fontSize: '16px',
+            fontWeight: '600',
+          }}
+        >
+          {username}
+        </Typography>
       </div>
       <div className={css.messageWrapper}>
-        <p className={css.messageText}>{message}</p>
+        <Typography variant="text" className={css.messageText}>
+          {message}
+        </Typography>
       </div>
       <div className={css.likesWrapper}>
-        <img
-          src={likeImg}
+        <Avatar
           alt="like"
-          className={css.likeIcon}
+          src={likeImg}
+          style={{
+            width: 26,
+            height: 26,
+            marginRight: '5px',
+            cursor: 'pointer',
+          }}
           onClick={likeHandler}
         />
-        <span className={css.likeCounter}>{like} likes</span>
+        <Typography variant="text" className={css.likeCounter}>
+          {like} likes
+        </Typography>
       </div>
-    </div>
+    </Container>
   );
 };
 

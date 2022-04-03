@@ -2,24 +2,30 @@ import { makeStyles } from '@mui/styles';
 import { theme } from '../../utils/helpers/palette';
 
 export const useStyles = makeStyles({
-  messagesWrapper: {
-    // display: 'flex',
-    // flexDirection: 'column',
-    height: '70vh',
-    // borderRadius: '10px',
-    backgroundColor: theme.palette.background.paper,
-    // WebkitBoxShadow: '0px 0px 16px -8px rgba(0, 0, 0, 0.68)',
-    // boxShadow: '0px 0px 16px -8px rgba(0, 0, 0, 0.68)',
+  table: {
+    minWidth: 650,
   },
-  headerMessage: {
+  chatSection: {
+    height: '50vh',
+    backgroundColor: theme.palette.primary.light,
+  },
+  headBG: {
+    backgroundColor: '#e0e0e0',
     textAlign: 'center',
-    marginBottom: '20px',
+  },
+  borderRight500: {
+    borderRight: '1px solid #e0e0e0',
+  },
+  messageArea: {
+    height: '70vh',
+    overflowY: 'auto',
+    backgroundColor: theme.palette.background.paper,
   },
   footer: {
     height: 52,
-    display: "flex",
-    alignItems: "center",
-    border: "none",
-    padding: "0 8px"
+    display: 'flex',
+    border: 'none',
+    padding: '0 8px',
+    alignItems: 'flex-end',
   },
 });

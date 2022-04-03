@@ -1,11 +1,8 @@
-import { createTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-const theme = createTheme();
-
 export const useStyles = makeStyles(() => ({
-  share: {
-    width: '90%',
+  form: {
+    // width: '90%',
     height: '100px',
     borderRadius: '10px',
     marginTop: '20px',
@@ -17,23 +14,11 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
   },
-  shareProfileImg: {
-    width: '40px',
-    height: '40px',
-    borderRadius: '50%',
-    objectFit: 'cover',
-    marginRight: '10px',
-  },
   shareInput: {
     border: 'none',
-    width: '80%',
-    '&:focus': {
-      outline: 'none'
-    },
-    height: '20px'
-  },
-  shareHr: {
-    margin: '10px',
+    width: '90%',
+    padding: '0px',
+    height: '36px',
   },
   shareBottom: {
     display: 'flex',
@@ -50,22 +35,4 @@ export const useStyles = makeStyles(() => ({
     marginRight: '15px',
     cursor: 'pointer',
   },
-  shareIcon: {
-    fontSize: '18px',
-    marginRight: '3px'
-  },
-  shareOptionText: {
-    fontSize: '14px',
-    fontWeight: '500'
-  },
-  shareButton: {
-    border: 'none',
-    padding: '7px',
-    borderRadius: '5px',
-    backgroundColor: 'green',
-    fontWeight: '500',
-    marginRight: '20px',
-    cursor: 'pointer',
-    color: 'white',
-  }
 }));

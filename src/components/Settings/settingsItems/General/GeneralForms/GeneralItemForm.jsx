@@ -40,6 +40,7 @@ const GeneralItemForm = ({ name, text, label, profile, setEditMode }) => {
   });
 
   const isLookingForAJob = name === 'lookingForAJob';
+  const isRequired = name === 'fullName' && true;
 
   return (
     <Box
@@ -66,7 +67,7 @@ const GeneralItemForm = ({ name, text, label, profile, setEditMode }) => {
           />
         </FormGroup>
       ) : (
-        <FormControl margin="normal" required fullWidth>
+        <FormControl margin="normal" required={isRequired} fullWidth>
           <InputLabel htmlFor={label}>{text}</InputLabel>
           <OutlinedInput
             id={name}

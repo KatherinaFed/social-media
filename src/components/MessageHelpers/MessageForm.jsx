@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { sendMessage } from '../../store/messages/messageSlice';
 import { Send } from '@mui/icons-material';
-import { Box, FormControl, TextField, Button } from '@mui/material';
+import { Box, FormControl, Button, InputBase } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles(() => ({
+  input: {
+    // flex: 'auto',
+    borderRadius: 40,
+    paddingLeft: 16,
+    backgroundColor: 'rgba(0,0,0,0.04)',
+    margin: '0 8px',
+    height: 36,
+    fontSize: 13,
+  },
+}));
 
 const MessageForm = () => {
+  const css = useStyles();
   const dispatch = useDispatch();
 
   const ENTER_KEY_CODE = 13;
+
+  const textInput = useRef(null);
+  useEffect(() => {
+    textInput.current.focus();
+  });
 
   const { handleChange, handleSubmit, isSubmitting, values } = useFormik({
     initialValues: {
@@ -30,13 +49,13 @@ const MessageForm = () => {
   return (
     <Box component="form" onSubmit={handleSubmit} className="form-box">
       <FormControl style={{ width: '80%' }}>
-        <TextField
+        <InputBase
+          className={css.input}
+          inputRef={textInput}
           id="message"
           name="message"
           type="text"
-          label="Type your message..."
-          variant="outlined"
-          size="small"
+          placeholder={"Type a message..."}
           onKeyDown={() => handleEnterKey}
           onChange={handleChange}
           disabled={isSubmitting}

@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
 import MessageItem from './MessageItem';
 
 const Messages = () => {

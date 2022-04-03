@@ -25,5 +25,7 @@ export const timing = () => {
     return hours + ':0' + minutes;
   }
 
-  return `${day}.${month}.${year}, ${hours}:${minutes}`;
+  const resultDate = `${day}.${month}.${year}, ${hours}:${minutes}`;
+
+  return resultDate;
 };

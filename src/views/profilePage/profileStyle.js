@@ -68,7 +68,7 @@ export const useStyles = makeStyles(() => ({
     marginTop: '10px',
   },
   profileDescription: {
-    marginTop: '20px'
+    margin: '20px'
   },
   text: {
     fontWeight: '500',

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Avatar, Button, Paper, Typography } from '@mui/material';
+import { Avatar, Paper, Typography } from '@mui/material';
 import { followThunk, unfollowThunk } from '../../store/users/usersThunk';
 import ButtonCustom from './ButtonCustom';
 

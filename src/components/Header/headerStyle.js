@@ -10,15 +10,19 @@ export const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
     backgroundColor: theme.palette.primary.main,
   },
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
   icons: {
     alignItems: 'center',
     display: 'flex',
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   icon: {
     marginRight: '10px',
   },
   text: {
-    marginRight: '10px'
-  }
+    marginRight: '10px',
+  },
 }));
