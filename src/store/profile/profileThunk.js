@@ -3,17 +3,12 @@ import {
   setProfile,
   setStatus,
   savePhoto,
-  saveAvatarOwner,
 } from './profileSlice';
 
 // PROFILE
 export const getProfileThunk = (userId) => async (dispatch) => {
   const response = await profileAPI.getProfile(userId);
   dispatch(setProfile(response));
-
-  if (userId === 21114) {
-    dispatch(saveAvatarOwner(response.photos.small));
-  }
 };
 
 // EDIT PROFILE
@@ -23,7 +18,7 @@ export const saveProfileThunk = (profileData, setStatus) => async (
 ) => {
   const userId = getState().auth.userId;
   const response = await profileAPI.saveProfile(profileData);
-// debugger
+
   if (response.data.resultCode === 0) {
     dispatch(getProfileThunk(userId));
   } else {

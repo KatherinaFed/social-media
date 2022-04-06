@@ -15,10 +15,15 @@ import Privacy from '../../components/Settings/settingsItems/Privacy';
 
 export const settingsList = [
   { id: 1, name: 'General', icon: <Settings />, link: <General /> },
+  { type: 'divider' },
   { id: 2, name: 'Location', icon: <LocationOn />, link: <Location /> },
+  { type: 'divider' },
   { id: 3, name: 'Theme mode', icon: <DarkMode />, link: <ThemeMode /> },
+  { type: 'divider' },
   { id: 4, name: 'Cookies', icon: <Cookie />, link: <Cookies /> },
   { type: 'divider' },
   { id: 5, name: 'Notifications', icon: <Notifications />, link: <Notification /> },
+  { type: 'divider' },
   { id: 6, name: 'Privacy', icon: <Lock />, link: <Privacy /> },
+  { type: 'divider' },
 ];

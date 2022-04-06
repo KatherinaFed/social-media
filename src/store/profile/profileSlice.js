@@ -35,12 +35,6 @@ const profileSlice = createSlice({
         profile: { ...state.profile, photos: action.payload },
       };
     },
-    saveAvatarOwner(state, action) {
-      return {
-        ...state,
-        avatar: action.payload,
-      };
-    },
     saveProfile(state, action) {
       return {
         ...state,
@@ -72,7 +66,6 @@ export const {
   setProfile,
   setStatus,
   savePhoto,
-  saveAvatarOwner,
   saveProfile,
   addPost,
   deletePost,

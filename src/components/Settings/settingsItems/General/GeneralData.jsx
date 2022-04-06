@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ContactsForm } from './GeneralForms/ContactsForm';
 import ListItemButtonCustomEdit from './ListItemButtonCustomEdit';
 import GeneralItemForm from './GeneralForms/GeneralItemForm';
+import { useSelector } from 'react-redux';
 
 const GeneralData = ({ profile }) => {
   const {
@@ -10,8 +11,9 @@ const GeneralData = ({ profile }) => {
     contacts,
     lookingForAJob,
     lookingForAJobDescription,
-    userId,
   } = profile;
+
+  const { userId } = useSelector((state) => state.auth);
 
   const [editName, setEditName] = useState(false);
   const [editAboutMe, setEditAboutMe] = useState(false);
@@ -22,7 +24,7 @@ const GeneralData = ({ profile }) => {
   const isLooking = lookingForAJob ? 'Yes' : 'No';
 
   const handleClickEdit = (id, editModeName) => () => {
-    if (id === 21114) {
+    if (id === userId) {
       editModeName(true);
     } else {
       editModeName(false);
@@ -42,7 +44,7 @@ const GeneralData = ({ profile }) => {
       ) : (
         <ListItemButtonCustomEdit
           id={0}
-          userId={userId}
+          userId={profile.userId}
           setEditMode={setEditName}
           handleClickEdit={handleClickEdit}
           name={'Name'}
@@ -60,7 +62,7 @@ const GeneralData = ({ profile }) => {
       ) : (
         <ListItemButtonCustomEdit
           id={1}
-          userId={userId}
+          userId={profile.userId}
           setEditMode={setEditAboutMe}
           handleClickEdit={handleClickEdit}
           name={'About me'}
@@ -78,7 +80,7 @@ const GeneralData = ({ profile }) => {
       ) : (
         <ListItemButtonCustomEdit
           id={2}
-          userId={userId}
+          userId={profile.userId}
           setEditMode={setEditLookingJob}
           handleClickEdit={handleClickEdit}
           name={'Looking for a job'}
@@ -96,7 +98,7 @@ const GeneralData = ({ profile }) => {
       ) : (
         <ListItemButtonCustomEdit
           id={3}
-          userId={userId}
+          userId={profile.userId}
           setEditMode={setEditDescription}
           handleClickEdit={handleClickEdit}
           name={'Job description'}
@@ -108,7 +110,7 @@ const GeneralData = ({ profile }) => {
       ) : (
         <ListItemButtonCustomEdit
           id={4}
-          userId={userId}
+          userId={profile.userId}
           setEditMode={setEditContact}
           handleClickEdit={handleClickEdit}
           name={'Contacts'}

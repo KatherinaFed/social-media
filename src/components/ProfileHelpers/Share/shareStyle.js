@@ -15,19 +15,21 @@ export const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
   shareInput: {
-    border: 'none',
+    borderRadius: 40,
+    paddingLeft: 16,
+    backgroundColor: 'rgba(0,0,0,0.04)',
+    margin: '0 8px',
     width: '90%',
-    padding: '0px',
-    height: '36px',
+    height: 36,
   },
   shareBottom: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   shareOptions: {
     display: 'flex',
-    marginLeft: '20px'
+    marginLeft: '20px',
   },
   shareOption: {
     display: 'flex',

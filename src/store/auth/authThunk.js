@@ -11,9 +11,17 @@ const initialState = {
 
 export const getAuthUserData = () => async (dispatch) => {
   const response = await authAPI.isAuth();
+  const { data } = response;
 
   if (response.resultCode === 0) {
-    dispatch(setAuthData(response.data));
+    dispatch(
+      setAuthData({
+        id: data.id,
+        login: data.login,
+        email: data.email,
+        isAuth: true,
+      })
+    );
   }
 };
 
@@ -24,7 +32,6 @@ export const login = (
   captcha,
   setStatus
 ) => async (dispatch) => {
-  
   const response = await authAPI.login(email, password, rememberMe, captcha);
 
   if (response.resultCode === 0) {
@@ -49,4 +56,4 @@ export const getCaptchaUrlThunk = () => async (dispatch) => {
   const captcha = response.data.url;
 
   dispatch(getCaptcha(captcha));
-}
+};

@@ -6,10 +6,10 @@ const appSlice = createSlice({
     initialized: false,
   },
   reducers: {
-    init(state) {
+    init(state, action) {
       return {
         ...state,
-        initialized: true,
+        initialized: action.payload,
       };
     },
   },

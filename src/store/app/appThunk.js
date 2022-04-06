@@ -6,6 +6,6 @@ export const initializeApp = () => (dispatch) => {
 
   // Если промисов много, то используем данный метод =>
   Promise.all([promise]).then(() => {
-    dispatch(init());
+    dispatch(init({ initialized: true }));
   });
 };
