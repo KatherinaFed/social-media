@@ -2,21 +2,21 @@ import {
   Collapse,
   FormControl,
   FormControlLabel,
-  ListItemButton,
-  ListItemIcon,
   ListItemText,
   Radio,
   RadioGroup,
 } from '@mui/material';
-import {
-  ExpandLess,
-  ExpandMore,
-  LocalOfferOutlined,
-} from '@mui/icons-material';
+import { LocalOfferOutlined } from '@mui/icons-material';
 import { useState } from 'react';
+import ListItemButtonCustom from '../customComponents/ListItemButtonCustom';
 
-const formControlLabelCustom = (value, label) => (
-  <FormControlLabel value={value} control={<Radio />} label={label} />
+const formControlLabelCustom = (value, label, index) => (
+  <FormControlLabel
+    key={index}
+    value={value}
+    control={<Radio />}
+    label={label}
+  />
 );
 
 export const Tags = () => {
@@ -34,14 +34,12 @@ export const Tags = () => {
 
   return (
     <>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <LocalOfferOutlined />
-        </ListItemIcon>
-        <h4 style={{ width: '200px', textAlign: 'left' }}>Tags</h4>
-        <ListItemText secondary="Push, Email" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
+      <ListItemButtonCustom
+        handleClick={handleClick}
+        icon={<LocalOfferOutlined />}
+        text={'Tags'}
+        open={open}
+      />
       <Collapse in={open} timeout="auto" unmountOnExit>
         <ListItemText secondary="These are notifications for when someone tags you in a comment, post or story." />
         <h4 style={{ width: 'auto', textAlign: 'left', marginTop: '10px' }}>
@@ -53,8 +51,8 @@ export const Tags = () => {
             defaultValue="anyone"
             name="radio-buttons-group"
           >
-            {nameOfRadioButtons.map(({ value, label }) =>
-              formControlLabelCustom(value, label)
+            {nameOfRadioButtons.map(({ value, label }, index) =>
+              formControlLabelCustom(value, label, index)
             )}
           </RadioGroup>
         </FormControl>

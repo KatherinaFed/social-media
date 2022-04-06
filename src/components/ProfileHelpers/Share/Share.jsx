@@ -17,7 +17,7 @@ import ShareItemCustom from './ShareItemCustom';
 const Share = ({ isOwner }) => {
   const css = useStyles();
 
-  const { profile, avatar } = useSelector((state) => state.profile);
+  const { profile } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
   const textInput = useRef(null);
@@ -50,11 +50,11 @@ const Share = ({ isOwner }) => {
       <div className={css.shareTop}>
         <Avatar
           alt="avatar"
-          src={avatar || userImg}
+          src={profile.photos.small || userImg}
           sx={{
             width: 40,
             height: 40,
-            marginRight: '10px',
+            marginRight: '5px',
           }}
         />
         <InputBase
@@ -66,7 +66,7 @@ const Share = ({ isOwner }) => {
           value={values.newPostText}
           placeholder={placeholderText}
           className={css.shareInput}
-          style={{ fontSize: 14 }}
+          style={{ fontSize: 13 }}
         />
       </div>
       <Divider style={{ margin: 10 }} />

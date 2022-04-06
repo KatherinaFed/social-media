@@ -1,60 +1,45 @@
-import {
-  Collapse,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Switch,
-} from '@mui/material';
-import {
-  ChatBubbleOutlineOutlined,
-  EmailOutlined,
-  ExpandLess,
-  ExpandMore,
-  NotificationsActiveOutlined,
-} from '@mui/icons-material';
+import { ChatBubbleOutlineOutlined } from '@mui/icons-material';
 import { useState } from 'react';
+import CollapseCustom from '../customComponents/CollapseCustom';
+import ListItemButtonCustom from '../customComponents/ListItemButtonCustom';
 
 export const Comments = () => {
   const [open, setOpen] = useState(false);
+  const [checkedPush, setCheckedPush] = useState(false);
+  const [checkedEmail, setCheckedEmail] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
+  const handleChecked = (checkedItem) => (e) => {
+    if (checkedItem === 'Push') {
+      setCheckedPush(e.target.checked);
+    }
+    if (checkedItem === 'Email') {
+      setCheckedEmail(e.target.checked);
+    }
+  };
+
   return (
     <>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <ChatBubbleOutlineOutlined />
-        </ListItemIcon>
-        <h4 style={{ width: '200px', textAlign: 'left' }}>Comments</h4>
-        <ListItemText secondary="Push, Email" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <ListItemText secondary="These are notifications for comments on your posts and replies to your comments." />
-        <h4 style={{ width: 'auto', textAlign: 'left', marginTop: '10px' }}>
-          Where you receive these notifications
-        </h4>
-        <List component="div" disablePadding>
-          <ListItem sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <NotificationsActiveOutlined />
-            </ListItemIcon>
-            <ListItemText primary="Push" />
-            <Switch />
-          </ListItem>
-          <ListItem sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <EmailOutlined />
-            </ListItemIcon>
-            <ListItemText primary="Email" />
-            <Switch />
-          </ListItem>
-        </List>
-      </Collapse>
+      <ListItemButtonCustom
+        handleClick={handleClick}
+        icon={<ChatBubbleOutlineOutlined />}
+        text={'Comments'}
+        open={open}
+        push={checkedPush}
+        email={checkedEmail}
+      />
+      <CollapseCustom
+        isOpen={open}
+        secondary={
+          'These are notifications for comments on your posts and replies to your comments.'
+        }
+        handleChecked={handleChecked}
+        push={checkedPush}
+        email={checkedEmail}
+      />
     </>
   );
 };

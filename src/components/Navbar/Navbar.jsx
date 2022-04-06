@@ -24,10 +24,6 @@ export const Navbar = () => {
   const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const location = useLocation().pathname;
-
-  // console.log('Index location: ', location === '/profile');
-
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
   };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Grid, IconButton } from '@mui/material';
+import { Avatar, Container, Grid, IconButton } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { useStyles, Input } from './profileStyle';
 import { Preloader } from '../../components/Preloader/Preloader';
@@ -43,14 +43,33 @@ export const Profile = ({ isOwner }) => {
               aria-label="upload picture"
               component="span"
             >
-              <img className={css.userImg} src={profile.photos.large} alt="" />
+              <Avatar
+                style={{
+                  width: 200,
+                  height: 200,
+                  border: '3px solid white',
+                  backgroundColor: 'white',
+                }}
+                src={profile.photos.large || userImg}
+                alt="profilePhoto"
+              />
             </IconButton>
           </label>
         ) : (
-          <img
-            className={css.userImgDef}
+          <Avatar
+            style={{
+              width: 200,
+              height: 200,
+              position: 'absolute',
+              left: '0',
+              right: '0',
+              margin: 'auto',
+              top: '150px',
+              border: '3px solid white',
+              backgroundColor: 'white',
+            }}
             src={profile.photos.large || userImg}
-            alt=""
+            alt="profilePhoto"
           />
         )}
       </div>
