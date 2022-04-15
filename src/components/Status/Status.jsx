@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@mui/styles';
 import { Input, Typography } from '@mui/material';
-import { updateStatusThunk } from '../../store/profile/profileThunk';
 
 export const useStyles = makeStyles(() => ({
   username: {
@@ -15,7 +14,6 @@ export const useStyles = makeStyles(() => ({
 }));
 
 export const Status = (props) => {
-  const css = useStyles();
   const [editMode, setEditMode] = useState(false);
   const [status, setStatus] = useState(props.status);
   const dispatch = useDispatch();
@@ -27,14 +25,14 @@ export const Status = (props) => {
   }, [props.status]); // зависимость от статуса
 
   const activateEditMode = () => {
-    if (props.isOwner) {
-      setEditMode(true);
-    }
+    setEditMode(true);
+    // if (props.isOwner) {
+    // }
   };
 
   const deactivateEditMode = () => {
     setEditMode(false);
-    dispatch(updateStatusThunk(status));
+    dispatch(props.updateStatus(status))
   };
 
   const onStatusChange = (e) => {
@@ -45,8 +43,8 @@ export const Status = (props) => {
     <>
       {editMode ? (
         <div>
-          <Input
-            data-testid="input"
+          <input
+            data-testid="inputStatus"
             autoFocus={true}
             onChange={onStatusChange}
             onBlur={deactivateEditMode}

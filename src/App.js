@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { Container, Grid } from '@mui/material';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Routes, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, Provider } from 'react-redux';
+import { store } from './store/index';
 
 import { Header, Navbar } from './components/index';
 import {
@@ -58,5 +59,15 @@ export const App = () => {
         </Grid>
       </Grid>
     </div>
+  );
+};
+
+export const RunApp = () => {
+  return (
+    <HashRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </HashRouter>
   );
 };

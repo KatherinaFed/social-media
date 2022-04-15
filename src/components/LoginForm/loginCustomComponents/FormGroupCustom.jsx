@@ -8,6 +8,7 @@ const FormGroupCustom = ({ id, name, checked, handleChecked }) => {
         control={
           <Checkbox
             id={id}
+            inputProps={{ 'data-testid': 'checkbox' }}
             size="small"
             checked={checked}
             onChange={handleChecked}

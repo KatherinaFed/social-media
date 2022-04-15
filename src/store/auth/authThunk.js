@@ -26,20 +26,26 @@ export const getAuthUserData = () => async (dispatch) => {
 };
 
 export const login = (
-  email,
-  password,
-  rememberMe,
-  captcha,
-  setStatus
+  data
+  // email,
+  // password,
+  // rememberMe,
+  // captcha,
+  // // setStatus
 ) => async (dispatch) => {
-  const response = await authAPI.login(email, password, rememberMe, captcha);
+  const response = await authAPI.login(
+    data.email,
+    data.password,
+    data.rememberMe,
+    data.captcha
+  );
 
   if (response.resultCode === 0) {
     dispatch(getAuthUserData());
   } else if (response.resultCode === 10) {
     dispatch(getCaptchaUrlThunk());
   } else {
-    setStatus(response.messages[0]);
+    alert(response.messages[0]);
   }
 };
 

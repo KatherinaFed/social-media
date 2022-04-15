@@ -8,7 +8,7 @@ import coverImg from '../../assets/cover.jpeg';
 import userImg from '../../assets/users.png';
 import ProfileData from '../../components/ProfileHelpers/ProfileData/ProfileData';
 import Share from '../../components/ProfileHelpers/Share/Share';
-import { savePhotoThunk } from '../../store/profile/profileThunk';
+import { savePhotoThunk, updateStatusThunk } from '../../store/profile/profileThunk';
 import Posts from '../../components/ProfileHelpers/ProfilePosts/Posts';
 
 export const Profile = ({ isOwner }) => {
@@ -75,7 +75,7 @@ export const Profile = ({ isOwner }) => {
       </div>
       <div className={css.profileInfo}>
         <h4 className={css.username}>{profile.fullName}</h4>
-        <Status status={status} isOwner={isOwner} />
+        <Status status={status} isOwner={isOwner} updateStatus={updateStatusThunk} />
       </div>
       <Grid container>
         <Grid item sm={9}>
