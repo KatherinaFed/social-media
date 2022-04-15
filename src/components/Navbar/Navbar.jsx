@@ -10,7 +10,7 @@ import {
   Login,
 } from '@mui/icons-material';
 import { Container } from '@mui/material';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { logout } from '../../store/auth/authThunk';
 import ListItemButtonCustom from './ListItemButtonCustom';
 import { createTheme } from '@mui/material';

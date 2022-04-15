@@ -1,21 +1,16 @@
 import { useState } from 'react';
-import {
-  Box,
-  Button,
-  Container,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useStyles } from './loginFromStyle';
 import { logInSchema } from '../../utils/helpers/validation';
 import { login } from '../../store/auth/authThunk';
-import FormControlCustom from './FormControlCustom';
-import FormGroupCustom from './FormGroupCustom';
+import FormControlCustom from '../LoginForm/loginCustomComponents/FormControlCustom';
+import FormGroupCustom from '../LoginForm/loginCustomComponents/FormGroupCustom';
 
-export const LoginForm = () => {
-  const dispatch = useDispatch();
+export const LoginForm = ({ login }) => {
   const css = useStyles();
+  const dispatch = useDispatch();
   const { captcha } = useSelector((state) => state.auth);
   const [checked, setChecked] = useState(false);
 
@@ -32,15 +27,7 @@ export const LoginForm = () => {
     },
     validationSchema: logInSchema,
     onSubmit: (values, { setStatus }) => {
-      dispatch(
-        login(
-          values.email,
-          values.password,
-          values.rememberMe,
-          values.captcha,
-          setStatus
-        )
-      );
+      dispatch(login(values));
     },
   });
 
@@ -59,7 +46,7 @@ export const LoginForm = () => {
           <FormControlCustom
             name={'email'}
             type={'text'}
-            text={'E-mail'}
+            text={'Email'}
             value={values.email}
             handleChange={handleChange}
           />
