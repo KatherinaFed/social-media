@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { PermMedia, Label, Room, EmojiEmotions } from '@mui/icons-material';
 import { useFormik } from 'formik';
 import { useStyles } from './shareStyle';
-import { addPost } from '../../../store/profile/profileSlice';
 import userImg from '../../../assets/users.png';
 import {
   Avatar,
@@ -14,10 +13,8 @@ import {
 } from '@mui/material';
 import ShareItemCustom from './ShareItemCustom';
 
-const Share = ({ isOwner }) => {
+const Share = ({ addPost, profile }) => {
   const css = useStyles();
-
-  const { profile } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
   const textInput = useRef(null);
@@ -35,10 +32,6 @@ const Share = ({ isOwner }) => {
       resetForm();
     },
   });
-
-  const placeholderText = isOwner
-    ? `What is in your mind ${profile.fullName}?`
-    : `Type something ${profile.fullName}...`;
 
   return (
     <Box
@@ -64,7 +57,7 @@ const Share = ({ isOwner }) => {
           onChange={handleChange}
           ref={textInput}
           value={values.newPostText}
-          placeholder={placeholderText}
+          placeholder={`What is in your mind ${profile.fullName}?`}
           className={css.shareInput}
           style={{ fontSize: 13 }}
         />

@@ -4,7 +4,6 @@ import { useFormik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useStyles } from './loginFromStyle';
 import { logInSchema } from '../../utils/helpers/validation';
-import { login } from '../../store/auth/authThunk';
 import FormControlCustom from '../LoginForm/loginCustomComponents/FormControlCustom';
 import FormGroupCustom from '../LoginForm/loginCustomComponents/FormGroupCustom';
 

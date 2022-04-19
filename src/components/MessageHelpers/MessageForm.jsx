@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MessageForm = () => {
+const MessageForm = ({ sendMessage }) => {
   const css = useStyles();
   const dispatch = useDispatch();
 
