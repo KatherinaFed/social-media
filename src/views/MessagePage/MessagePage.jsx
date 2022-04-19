@@ -7,6 +7,7 @@ import Messages from '../../components/MessageHelpers/Messages';
 import MessageForm from '../../components/MessageHelpers/MessageForm';
 import ChatSearch from '../../components/MessageHelpers/ChatSearch';
 import MessageHeader from '../../components/MessageHelpers/MessageHeader';
+import { sendMessage } from '../../store/messages/messageSlice';
 
 const MessagePage = () => {
   const { messages } = useSelector((state) => state.messages);
@@ -80,7 +81,7 @@ const MessagePage = () => {
                   padding: '10px',
                 }}
               >
-                <MessageForm />
+                <MessageForm sendMessage={sendMessage} />
               </Grid>
             </Grid>
           </Box>
