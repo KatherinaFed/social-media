@@ -1,6 +1,6 @@
 ## React Project - Social Media (light version).
 
-### This site was built using [GitHub Pages](https://katherinafed.github.io/social-media).
+### [Try Social Media here](https://katherinafed.github.io/social-media)
 
 **Login:**
 ```
